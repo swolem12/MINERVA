@@ -1,0 +1,28 @@
+MODULE: MENTAL_FORGE
+
+OBJECTIVE:
+Build fast mental arithmetic and calculation reflexes needed for no-calculator timed AFOQT performance.
+
+SKILLS:
+- FastMultiplication
+- FastDivision
+- LongDivision
+- FractionToDecimal
+- DecimalToPercent
+- PercentShortcuts
+- NumberDecomposition
+- Estimation
+- Rounding
+- AnswerChoiceComparison
+
+DRILL_MODES:
+- Warmup
+- LightningRound
+- CombatTimer
+- SurvivalStreak
+- DailyReflex
+
+RULES:
+- MentalForgeSupportsAFOQT
+- DoNotBecomeGenericArithmeticGame
+- ConnectEachDrillToARorMK

@@ -1,0 +1,12 @@
+MODULE: FIREBASE_SECURITY_RULES
+
+OBJECTIVE:
+Protect user data and curriculum integrity.
+
+RULES:
+- AuthRequiredForProgress
+- UsersOwnTheirProgress
+- CurriculumReadPublicOrAuthenticated
+- CurriculumWriteAdminOnly
+- QuestionValidationWriteAdminOrTrustedFunctionOnly
+- NoClientPrivilegeEscalation

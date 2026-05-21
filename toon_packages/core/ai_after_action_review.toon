@@ -1,0 +1,28 @@
+MODULE: AI_AFTER_ACTION_REVIEW
+
+OBJECTIVE:
+Generate useful post-session coaching summaries.
+
+INPUTS:
+- QuestionsAnswered
+- CorrectAnswers
+- IncorrectAnswers
+- TimePerQuestion
+- ConfidenceRatings
+- ErrorTaxonomy
+- StreakData
+
+OUTPUTS:
+- WhatImproved
+- WhatBrokeDown
+- RootCauseAnalysis
+- RecommendedNextMission
+- MentalMathPrescription
+- EncouragementStatement
+
+STYLE:
+- Clear
+- Direct
+- Encouraging
+- Tactical
+- NoShame

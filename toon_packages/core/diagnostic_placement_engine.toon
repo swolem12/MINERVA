@@ -1,0 +1,36 @@
+MODULE: DIAGNOSTIC_PLACEMENT_ENGINE
+
+OBJECTIVE:
+Assess learner readiness across AFOQT quantitative domains and assign a personalized starting path.
+
+INPUTS:
+- Accuracy
+- TimePerQuestion
+- ConfidenceRating
+- ErrorType
+- ConceptTag
+- HesitationTime
+
+ASSESSMENT_AREAS:
+- ArithmeticFluency
+- Fractions
+- Decimals
+- Percentages
+- Ratios
+- AlgebraReadiness
+- GeometryReadiness
+- WordProblemReasoning
+- MentalMathSpeed
+
+OUTPUTS:
+- StartingRegion
+- WeaknessMap
+- ConfidenceProfile
+- DailyTrainingPlan
+- RemediationPath
+
+RULES:
+- DoNotOverwhelmUser
+- PreferConfidenceBuildingStart
+- DetectPrerequisiteGaps
+- SeparateKnowledgeFailureFromSpeedFailure

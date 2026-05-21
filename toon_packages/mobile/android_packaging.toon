@@ -1,0 +1,19 @@
+MODULE: ANDROID_PACKAGING
+
+OBJECTIVE:
+Package MINERVA as an Android-ready application using Capacitor.
+
+STEPS:
+- BuildNextApp
+- ConfigurePWA
+- AddCapacitor
+- AddAndroidPlatform
+- ConfigureAppNameMINERVA
+- ConfigureIcons
+- ConfigureSplashScreen
+- BuildAPK
+
+CONFIG:
+appId: com.minerva.afoqt
+appName: MINERVA
+webDir: out

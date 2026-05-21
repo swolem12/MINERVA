@@ -1,0 +1,39 @@
+MODULE: MATH_KNOWLEDGE
+
+OBJECTIVE:
+Teach AFOQT Math Knowledge terms, principles, formulas, and relationships.
+
+TOPIC_FAMILIES:
+- BasicArithmetic
+- Fractions
+- Algebra
+- AlgebraicExpressions
+- LinearEquations
+- SystemsOfEquations
+- Inequalities
+- AbsoluteValue
+- Exponents
+- Geometry
+- TriangleProperties
+- Polynomials
+- Factoring
+- FormulasAndRelationships
+- AlgebraWordProblems
+
+QUESTION_PATTERNS:
+- SimplifyExpression
+- EvaluateExpression
+- SolveLinearEquation
+- SolveSystemOfEquations
+- SolveInequality
+- EvaluateAbsoluteValue
+- ApplyExponentRule
+- FactorPolynomial
+- ApplyTriangleProperty
+- UseGeometryFormula
+
+TEACHING_RULES:
+- StartWithDefinition
+- ShowFormulaMeaning
+- UseCleanExamples
+- BuildToTimedPractice

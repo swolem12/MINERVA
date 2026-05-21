@@ -1,0 +1,29 @@
+MODULE: FIREBASE_SETUP
+
+OBJECTIVE:
+Define Firebase backend architecture for MINERVA.
+
+SERVICES:
+- FirebaseAuthentication
+- Firestore
+- FirebaseStorage
+- CloudFunctions
+- FirebaseHosting
+
+COLLECTIONS:
+- users
+- profiles
+- lessons
+- questions
+- attempts
+- mastery
+- missions
+- officerTrials
+- afterActionReviews
+- generatedQuestionValidation
+
+SECURITY:
+- UsersCanReadOwnProgress
+- UsersCanWriteOwnAttempts
+- AdminsCanPublishCurriculum
+- GeneratedQuestionsMustBeValidatedBeforePublic

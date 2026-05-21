@@ -1,0 +1,23 @@
+MODULE: MOBILE_SYSTEMS
+
+OBJECTIVE:
+Ensure MINERVA is Android-ready, PWA-ready, and mobile-native in feel.
+
+REQUIREMENTS:
+- MobileFirst
+- TouchFirst
+- PWAInstall
+- OfflineLessonCache
+- OfflineDrills
+- LocalProgressRecovery
+- FirebaseSync
+- CapacitorAndroidWrapper
+- PushNotifications
+- AndroidAPKWorkflow
+
+RULES:
+- NotDesktopShrunkToPhone
+- BottomNavigationPreferred
+- ThumbReachOptimized
+- FastLoadTimes
+- GPUConsciousAnimations

@@ -1,0 +1,19 @@
+MODULE: CENTERED_UI_RULES
+
+OBJECTIVE:
+Enforce center-aligned typography and layout hierarchy.
+
+RULES:
+- HeadersCenterAligned
+- ButtonsCenterAligned
+- LessonTitlesCenterAligned
+- ExplanationsCenterAlignedUnlessLongFormReadingRequiresBetterLineFlow
+- RewardTextCenterAligned
+- MissionBriefingTextCenterAligned
+- HUDCardsSymmetrical
+- PrimaryActionsCentered
+
+EXCEPTIONS:
+- LongReadingParagraphsMayUseReadableMaxWidth
+- DataTablesMayUseColumnAlignment
+- CodeBlocksMayUseMonospaceLeftAlignment

@@ -1,0 +1,30 @@
+MODULE: AFOQT_MASTER_CURRICULUM
+
+OBJECTIVE:
+Define the full MINERVA quantitative curriculum map.
+
+DOMAINS:
+- ArithmeticReasoning
+- MathKnowledge
+- MentalForge
+- FormulaArmory
+- WordProblemTranslator
+- OfficerTrials
+
+DIFFICULTY_TIERS:
+- Recruit
+- Cadet
+- Specialist
+- OfficerCandidate
+- Elite
+
+MASTERY_REQUIREMENTS:
+- ConceptAccuracy >= 85
+- TimedAccuracy >= 75
+- RetentionPassRequired TRUE
+- ErrorRateDeclining TRUE
+
+CURRICULUM_EXCLUSION:
+ExcludeCalculus TRUE
+ExcludeAdvancedUniversityMath TRUE
+ExcludeOffScopeTopics TRUE

@@ -1,0 +1,19 @@
+MODULE: PWA_MANIFEST
+
+OBJECTIVE:
+Define installable PWA behavior.
+
+MANIFEST:
+name: MINERVA
+short_name: MINERVA
+start_url: /
+display: standalone
+orientation: portrait
+background_color: #111827
+theme_color: #8C1515
+
+REQUIRED:
+- ServiceWorker
+- OfflineFallback
+- AppIcons
+- InstallPrompt

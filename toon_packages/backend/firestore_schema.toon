@@ -1,0 +1,34 @@
+MODULE: FIRESTORE_SCHEMA
+
+OBJECTIVE:
+Define core Firestore document structures.
+
+USER_PROFILE:
+- uid
+- displayName
+- rank
+- xp
+- streak
+- createdAt
+- lastActiveAt
+- settings
+
+QUESTION_ATTEMPT:
+- uid
+- questionId
+- selectedAnswer
+- correct
+- timeMs
+- confidence
+- errorType
+- skillTags
+- createdAt
+
+SKILL_MASTERY:
+- uid
+- skillTag
+- accuracy
+- avgTimeMs
+- masteryLevel
+- retentionDueAt
+- confidence

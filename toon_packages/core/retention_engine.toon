@@ -1,0 +1,26 @@
+MODULE: RETENTION_ENGINE
+
+OBJECTIVE:
+Use spaced repetition to preserve quantitative mastery over time.
+
+REVIEW_TRIGGERS:
+- FirstCorrect
+- FirstIncorrect
+- WeakSkillDetected
+- RetentionDecayPredicted
+- BeforeOfficerTrial
+- AfterLongBreak
+
+INTERVALS:
+- SameDay
+- NextDay
+- ThreeDays
+- SevenDays
+- FourteenDays
+- ThirtyDays
+
+PRIORITY_RULES:
+- ReviewHighValueWeakSkillsFirst
+- MixOldAndNewSkills
+- KeepSessionsShort
+- DoNotOverloadLearner

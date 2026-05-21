@@ -1,0 +1,23 @@
+MODULE: WORLD_MAP_SYSTEM
+
+OBJECTIVE:
+Represent curriculum as an ARPG-style tactical campaign map.
+
+REGIONS:
+- ArithmeticFrontier
+- RatioRidge
+- DecimalDistrict
+- AlgebraCitadel
+- GeometrySector
+- VelocityRange
+- MentalForge
+- OfficerTrials
+
+NODE_TYPES:
+- Lesson
+- Drill
+- Review
+- Boss
+- Simulation
+- Locked
+- Mastered

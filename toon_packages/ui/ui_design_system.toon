@@ -1,0 +1,33 @@
+MODULE: UI_DESIGN_SYSTEM
+
+OBJECTIVE:
+Define MINERVA visual identity and component behavior.
+
+DESIGN_LANGUAGE:
+- StanfordInspiredPalette
+- TacticalHUD
+- ARPGWorldMap
+- PremiumMobileGameInterface
+- CinematicMissionBriefings
+
+COLOR_TOKENS:
+- StanfordCardinal #8C1515
+- StanfordBrightRed #B1040E
+- Sandstone #D2C295
+- CoolGray #4D4F53
+- DeepCharcoal #111827
+- WarmWhite #F9FAF7
+- MutedGold #C8A951
+
+TEXT_ALIGNMENT:
+- CenterAllPrimaryText TRUE
+- CenterButtons TRUE
+- CenterLessonCards TRUE
+- CenterRewardScreens TRUE
+- CenterMissionBriefings TRUE
+
+ACCESSIBILITY:
+- HighContrastMode
+- ReducedMotionMode
+- LargeTextMode
+- DyscalculiaFriendlySpacing

@@ -1,0 +1,35 @@
+MODULE: PREREQUISITE_KNOWLEDGE_GRAPH
+
+OBJECTIVE:
+Map every AFOQT quantitative skill to its required prerequisite skills.
+
+GRAPH_NODES:
+- Addition
+- Subtraction
+- Multiplication
+- Division
+- LongDivision
+- Fractions
+- Decimals
+- Percentages
+- Ratios
+- Proportions
+- Exponents
+- Roots
+- LinearEquations
+- Inequalities
+- AbsoluteValue
+- GeometryFormulas
+- WordProblemTranslation
+
+EDGE_TYPES:
+- Requires
+- Reinforces
+- CommonlyConfusedWith
+- Unlocks
+
+FAILURE_LOGIC:
+- IdentifyRootCause
+- AssignMicroLesson
+- RetestPrerequisite
+- ResumePrimaryLesson

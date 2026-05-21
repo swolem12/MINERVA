@@ -1,0 +1,29 @@
+MODULE: ADAPTIVE_LEARNING
+
+OBJECTIVE:
+Personalize the learner path based on mastery, speed, confidence, and mistake type.
+
+SIGNALS:
+- Accuracy
+- Speed
+- Confidence
+- RetentionDecay
+- ErrorTaxonomy
+- StreakQuality
+- TimeUnderPressure
+
+ADAPTIVE_ACTIONS:
+- PromoteDifficulty
+- ReduceDifficulty
+- AssignPrerequisite
+- AssignMentalForge
+- AssignFormulaReview
+- AssignWordProblemTranslator
+- AssignTimedExposure
+
+RULES:
+- AccuracyBeforeSpeed
+- ConfidenceBeforeCombatTimer
+- RepeatWeakSkillsWithVariation
+- AvoidRepetitionFatigue
+- RewardRecovery

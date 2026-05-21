@@ -1,0 +1,36 @@
+MODULE: ARITHMETIC_REASONING
+
+OBJECTIVE:
+Teach AFOQT Arithmetic Reasoning through word problems and timed quantitative reasoning.
+
+TOPIC_FAMILIES:
+- ArithmeticWordProblems
+- GeometryApplications
+- Proportions
+- Ratios
+- Mixtures
+- Integers
+- Percentages
+- TimeDistanceRate
+- UnitConversions
+- ScaleConversions
+- VolumeApplications
+- PercentOfTotal
+- MultiStepReasoning
+
+QUESTION_PATTERNS:
+- FindDistanceGivenRateAndTime
+- FindRateGivenDistanceAndTime
+- FindTimeGivenDistanceAndRate
+- SolveRatioComparison
+- SolvePartWholePercent
+- SolveMixtureOrCombinedValue
+- ConvertUnitsInsideProblem
+- UseGeometryFormulaInWordProblem
+
+TEACHING_RULES:
+- TranslateWordsFirst
+- IdentifyUnknown
+- EstimateBeforeSolving
+- SolveStepByStep
+- CheckReasonableness

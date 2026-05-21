@@ -1,0 +1,31 @@
+{
+  "package_name": "MINERVA_GITHUB_PACKAGE_v1",
+  "application_name": "MINERVA",
+  "package_type": "agent_ingestion_repository_package",
+  "version": "1.0.0",
+  "primary_goal": "Build a tactical ARPG AFOQT quantitative learning platform.",
+  "curriculum_scope": [
+    "Arithmetic Reasoning",
+    "Math Knowledge",
+    "Mental Math Support Skills"
+  ],
+  "deployment_targets": [
+    "PWA",
+    "Android",
+    "Web"
+  ],
+  "backend_target": "Firebase",
+  "ui_rule": "All primary UI text and layouts are center aligned.",
+  "forbidden_topics": [
+    "calculus",
+    "derivatives",
+    "integrals",
+    "limits",
+    "advanced linear algebra",
+    "matrices",
+    "complex numbers",
+    "advanced trigonometry",
+    "proof geometry"
+  ],
+  "agent_start_file": "docs/agent_ingestion/AGENT_INGESTION_GUIDE.md"
+}

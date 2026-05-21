@@ -1,0 +1,27 @@
+MODULE: EXCLUDED_TOPICS
+
+OBJECTIVE:
+Prevent MINERVA from drifting into irrelevant math content.
+
+EXCLUDE:
+- Calculus
+- Derivatives
+- Integrals
+- Limits
+- DifferentialEquations
+- LinearAlgebraBeyondSimpleSystems
+- Matrices
+- ComplexNumbers
+- AdvancedTrigonometry
+- TrigonometricIdentities
+- LogarithmsAsMajorTopic
+- AdvancedStatistics
+- ProbabilityDistributions
+- ProofGeometry
+- ConicSections
+- Vectors
+- AdvancedFinance
+- PrecalculusBeyondBasicAlgebraicRelationships
+
+ENFORCEMENT:
+QuestionGenerationGovernorRejectsExcludedTopics TRUE

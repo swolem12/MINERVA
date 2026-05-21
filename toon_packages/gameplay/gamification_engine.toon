@@ -1,0 +1,18 @@
+MODULE: GAMIFICATION_ENGINE
+
+OBJECTIVE:
+Reward learning behaviors that improve AFOQT performance.
+
+SYSTEMS:
+- XP
+- Levels
+- Ranks
+- Streaks
+- Badges
+- BossBattles
+- DailyMissions
+- CampaignMap
+
+RULE:
+GamificationMustReinforceLearning TRUE
+NoEmptyGrinding TRUE

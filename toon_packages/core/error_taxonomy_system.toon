@@ -1,0 +1,25 @@
+MODULE: ERROR_TAXONOMY_SYSTEM
+
+OBJECTIVE:
+Classify mistakes so remediation is accurate.
+
+ERROR_TYPES:
+- ConceptualGap
+- ArithmeticSlip
+- FormulaRecallFailure
+- QuestionMisread
+- UnitConversionFailure
+- TimePressureFailure
+- GuessingPattern
+- AlgebraSetupFailure
+- SignError
+- FractionOperationFailure
+- DecimalPlacementError
+
+REMEDIATION_RULES:
+- ConceptualGap -> TeachAgainSlowly
+- ArithmeticSlip -> MentalForgeDrill
+- FormulaRecallFailure -> FormulaCardReview
+- TimePressureFailure -> TimedExposureTraining
+- QuestionMisread -> ReadingPrecisionDrill
+- UnitConversionFailure -> ConversionMicroLesson

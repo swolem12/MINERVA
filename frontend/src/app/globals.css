@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+:root {
+  /* Stanford brand */
+  --stanford-cardinal: #8c1515;
+  --stanford-cardinal-dark: #6e0f0f;
+  --stanford-cardinal-light: #b1040e;
+  --stanford-cardinal-soft: #fdeaea;
+  --stanford-cool-gray: #535659;
+  --stanford-cool-gray-light: #8a8b8c;
+  --stanford-sandstone: #b6a88a;
+  --stanford-sandstone-light: #e8e0d0;
+  --stanford-black: #2e2d29;
+
+  /* Surfaces — clean academic (Khan-style) */
+  --surface-base: #f7f7f7;
+  --surface-raised: #ffffff;
+  --surface-muted: #efefef;
+  --surface-sidebar: #fafafa;
+
+  /* Text */
+  --text-primary: #2e2d29;
+  --text-secondary: #535659;
+  --text-muted: #8a8b8c;
+  --text-on-brand: #ffffff;
+
+  /* Legacy token remap */
+  --cardinal: var(--stanford-cardinal);
+  --cardinal-bright: var(--stanford-cardinal-light);
+  --sandstone: var(--text-secondary);
+  --slate: var(--text-muted);
+  --charcoal: var(--surface-base);
+  --charcoal-panel: var(--surface-raised);
+  --warm-white: var(--text-primary);
+  --muted-gold: var(--stanford-sandstone);
+
+  --brand-soft: var(--stanford-cardinal-soft);
+  --gold-soft: var(--stanford-sandstone-light);
+
+  /* Duolingo-style button depth */
+  --shadow-btn: 0 4px 0 var(--stanford-cardinal-dark);
+  --shadow-btn-active: 0 2px 0 var(--stanford-cardinal-dark);
+  --shadow-sm: 0 1px 3px rgba(46, 45, 41, 0.08), 0 4px 12px rgba(46, 45, 41, 0.04);
+  --shadow-md: 0 4px 20px rgba(46, 45, 41, 0.1);
+  --shadow-node: 0 3px 0 rgba(46, 45, 41, 0.15);
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  --nav-height: 64px;
+  --header-height: 56px;
+}
+
+@theme inline {
+  --color-cardinal: var(--cardinal);
+  --color-cardinal-bright: var(--cardinal-bright);
+  --color-sandstone: var(--sandstone);
+  --color-slate: var(--slate);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-panel: var(--charcoal-panel);
+  --color-warm-white: var(--warm-white);
+  --color-muted-gold: var(--muted-gold);
+  --color-brand-soft: var(--brand-soft);
+  --color-gold-soft: var(--gold-soft);
+  --color-surface-muted: var(--surface-muted);
+  --color-cool-gray: var(--stanford-cool-gray);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--surface-base);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mesh-bg {
+  background: var(--surface-base);
+}
+
+.glass-panel,
+.card {
+  background: var(--surface-raised);
+  border: 1px solid rgba(46, 45, 41, 0.08);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-elevated { box-shadow: var(--shadow-md); }
+.shadow-card { box-shadow: var(--shadow-sm); }
+
+.btn-primary {
+  background: var(--stanford-cardinal);
+  color: var(--text-on-brand);
+  box-shadow: var(--shadow-btn);
+  border-radius: var(--radius-lg);
+  font-weight: 700;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--stanford-cardinal-light);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-btn-active);
+}
+
+.btn-secondary {
+  background: var(--surface-raised);
+  color: var(--text-primary);
+  border: 2px solid rgba(46, 45, 41, 0.12);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  border-color: var(--stanford-cardinal);
+  color: var(--stanford-cardinal);
+}
+
+.btn-ghost {
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: var(--surface-muted);
+  color: var(--text-primary);
+}
+
+.path-line {
+  background: #d1d1d1;
+  width: 4px;
+  border-radius: var(--radius-full);
+}
+
+.path-line-done {
+  background: var(--stanford-cardinal);
+}
+
+.math-display {
+  font-variant-numeric: tabular-nums;
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.app-shell {
+  padding-bottom: calc(var(--nav-height) + env(safe-area-inset-bottom, 0));
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

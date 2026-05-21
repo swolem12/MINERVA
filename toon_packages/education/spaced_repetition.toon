@@ -1,0 +1,16 @@
+MODULE: SPACED_REPETITION
+
+OBJECTIVE:
+Schedule review based on skill decay, confidence, and exam value.
+
+INPUTS:
+- LastSeen
+- LastAccuracy
+- Confidence
+- SkillImportance
+- ErrorFrequency
+
+OUTPUTS:
+- ReviewQueue
+- DailyReviewSet
+- WeakSkillPriority

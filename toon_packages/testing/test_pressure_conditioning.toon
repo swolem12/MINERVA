@@ -1,0 +1,24 @@
+MODULE: TEST_PRESSURE_CONDITIONING
+
+OBJECTIVE:
+Improve performance under timed AFOQT-style constraints.
+
+MODES:
+- CalmPractice
+- SoftTimer
+- CombatTimer
+- SurvivalRound
+- OfficerTrial
+
+TRACKED_METRICS:
+- AccuracyUnderPressure
+- AverageSolveTime
+- PanicErrorRate
+- SkipDecisionQuality
+- RecoveryAfterError
+
+TRAINING_RULES:
+- BuildSpeedAfterAccuracy
+- DoNotPunishEarlyLearners
+- IncreasePressureGradually
+- RewardCalmExecution

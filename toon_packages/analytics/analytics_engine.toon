@@ -1,0 +1,20 @@
+MODULE: ANALYTICS_ENGINE
+
+OBJECTIVE:
+Turn user performance data into useful learning decisions.
+
+DASHBOARDS:
+- SkillMasteryMap
+- WeaknessHeatmap
+- SpeedAccuracyMatrix
+- ConfidenceTrend
+- OfficerTrialHistory
+- MentalForgeProgress
+
+METRICS:
+- Accuracy
+- AverageSolveTime
+- ErrorTypeFrequency
+- RetentionDecay
+- PressurePerformance
+- PrerequisiteGapScore

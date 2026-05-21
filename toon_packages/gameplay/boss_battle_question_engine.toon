@@ -1,0 +1,16 @@
+MODULE: BOSS_BATTLE_QUESTION_ENGINE
+
+OBJECTIVE:
+Create mastery checkpoints that combine accuracy, speed, and confidence.
+
+BOSS_TYPES:
+- ConceptBoss
+- SpeedBoss
+- MixedSkillBoss
+- OfficerTrialMiniBoss
+
+PASS_CRITERIA:
+- AccuracyThreshold
+- TimeThreshold
+- NoCriticalConceptErrors
+- ConfidenceCheck

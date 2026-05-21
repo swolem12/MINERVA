@@ -1,0 +1,57 @@
+MODULE: SYSTEM_ARCHITECTURE
+
+OBJECTIVE:
+Define the full MINERVA system architecture for frontend, backend, mobile deployment, curriculum governance, and agent generation.
+
+LAYERS:
+- PresentationLayer
+- LessonEngineLayer
+- QuestionEngineLayer
+- AdaptiveLearningLayer
+- GamificationLayer
+- AnalyticsLayer
+- PersistenceLayer
+- MobileOfflineLayer
+- AIInstructionLayer
+
+FRONTEND:
+- NextJSAppRouter
+- ReactComponents
+- TypeScriptDomainModels
+- TailwindDesignTokens
+- FramerMotionAnimations
+- CenterAlignedLayoutSystem
+
+BACKEND:
+- FirebaseAuth
+- Firestore
+- FirebaseStorage
+- CloudFunctions
+- SecurityRules
+
+MOBILE:
+- PWAManifest
+- ServiceWorker
+- OfflineCache
+- CapacitorAndroid
+- PushNotifications
+
+DATA_DOMAINS:
+- UserProfile
+- DiagnosticResult
+- LessonProgress
+- QuestionAttempt
+- SkillMastery
+- Streaks
+- XP
+- Badges
+- OfficerTrialResults
+- AfterActionReviews
+
+NONNEGOTIABLES:
+- AFOQTScopeOnly
+- CenterAlignedUI
+- MobileFirst
+- AndroidReady
+- PWAReady
+- FirebaseReady

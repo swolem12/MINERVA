@@ -1,0 +1,47 @@
+MODULE: APPLICATION_MANIFEST
+
+APPLICATION_NAME: MINERVA
+APPLICATION_TYPE: Tactical ARPG AFOQT Quantitative Learning Platform
+VERSION: 1.0.0
+
+PRIMARY_OBJECTIVE:
+Build a mobile-first AFOQT quantitative mastery engine for adults who need to improve arithmetic reasoning, math knowledge, and timed quantitative performance.
+
+NOT_GENERIC_MATH_APP: TRUE
+
+TARGET_EXAM:
+AFOQT 2026 public quantitative scope
+
+PRIMARY_SECTIONS:
+- ArithmeticReasoning
+- MathKnowledge
+
+SUPPORT_SECTIONS:
+- MentalMathAcceleration
+- TimedTestStrategy
+- ConfidenceRecovery
+
+DEPLOYMENT_TARGETS:
+- PWA
+- Android
+- Web
+
+BACKEND_TARGET:
+Firebase
+
+FRONTEND_TARGET:
+NextJS React TypeScript Tailwind
+
+GLOBAL_UI_RULES:
+- CenterAlignedText
+- MobileFirst
+- TouchFirst
+- CinematicHierarchy
+- StanfordInspiredPalette
+- TacticalHUD
+
+FORBIDDEN_SCOPE:
+- Calculus
+- AdvancedUniversityMath
+- UnrelatedMathCurriculum
+- UnsupportedExamTopics

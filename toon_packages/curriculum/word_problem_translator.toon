@@ -1,0 +1,28 @@
+MODULE: WORD_PROBLEM_TRANSLATOR
+
+OBJECTIVE:
+Train users to translate AFOQT-style word problems into solvable math structures.
+
+TRANSLATION_PATTERNS:
+- TotalUnknown
+- RateTimeDistance
+- PartWholePercent
+- RatioComparison
+- ConsecutiveInteger
+- AverageUnknown
+- WorkRateSupport
+- UnitConversion
+
+TEACHING_FLOW:
+- HighlightImportantWords
+- RemoveDistractors
+- IdentifyUnknown
+- SelectEquationPattern
+- SolveStepByStep
+- CheckReasonableness
+
+TACTICAL_DRILLS:
+- SpotTheUnknown
+- BuildTheEquation
+- EliminateNoise
+- EstimateBeforeSolving

@@ -1,0 +1,34 @@
+MODULE: PREREQUISITE_SKILLS
+
+OBJECTIVE:
+Teach foundation skills only when required for verified AFOQT quantitative topics.
+
+FOUNDATION_SKILLS:
+- Addition
+- Subtraction
+- Multiplication
+- Division
+- LongDivision
+- DecimalOperations
+- FractionOperations
+- MixedNumbers
+- PercentDecimalFractionConversion
+- ReducingFractions
+- LeastCommonDenominator
+- GreatestCommonFactor
+- OrderOfOperations
+- PositiveNegativeRules
+- Estimation
+- Rounding
+- UnitConversion
+- EquationSetup
+- FormulaSubstitution
+
+CLASSIFICATION:
+- PrerequisiteSkill
+- FoundationSkill
+- RemediationSkill
+- MentalForgeSkill
+
+RULE:
+Never label prerequisites as standalone official AFOQT topics unless directly supported by verified scope.

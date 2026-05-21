@@ -1,0 +1,43 @@
+MODULE: FORMULA_ARMORY
+
+OBJECTIVE:
+Provide a focused AFOQT formula mastery system.
+
+FORMULA_CATEGORIES:
+- Geometry
+- CoordinateGeometry
+- Percentages
+- RateTimeDistance
+- Averages
+- BasicProbability
+- Exponents
+- Radicals
+
+FORMULA_CARDS:
+- AreaRectangle
+- AreaTriangle
+- AreaCircle
+- Perimeter
+- Circumference
+- VolumeRectangularPrism
+- Slope
+- Midpoint
+- DistanceFormula
+- PercentChange
+- Average
+- RateTimeDistance
+
+CARD_STRUCTURE:
+- FormulaName
+- Formula
+- PlainEnglishMeaning
+- WhenToUse
+- VisualExample
+- PracticeSet
+- CommonTrap
+
+GAMEPLAY:
+- UnlockFormulaCards
+- EquipFormulaLoadout
+- FormulaRecallDrills
+- BossBattleFormulaChecks

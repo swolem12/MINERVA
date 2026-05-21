@@ -1,0 +1,16 @@
+MODULE: DAILY_MISSION_GENERATOR
+
+OBJECTIVE:
+Generate short daily study paths based on current weaknesses and retention needs.
+
+MISSION_BLOCKS:
+- Warmup
+- NewLesson
+- MentalForge
+- WeakSkillReview
+- QuickBoss
+
+TARGET_DURATION_MINUTES:
+- 10
+- 20
+- 30

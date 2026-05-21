@@ -1,0 +1,47 @@
+MODULE: VERIFIED_AFOQT_SCOPE
+
+OBJECTIVE:
+Lock MINERVA curriculum to verified AFOQT quantitative scope.
+
+SOURCE_OF_TRUTH:
+Current public AFOQT outline from Pearson VUE is treated as active test-outline source.
+
+PRIMARY_QUANTITATIVE_SECTIONS:
+- ArithmeticReasoning
+- MathKnowledge
+
+ARITHMETIC_REASONING_OFFICIAL_FAMILIES:
+- ArithmeticWordProblems
+- GeometryApplications
+- Proportions
+- Ratios
+- Mixtures
+- Integers
+- Percentages
+- TimeDistanceRate
+
+MATH_KNOWLEDGE_OFFICIAL_FAMILIES:
+- BasicArithmetic
+- Algebra
+- Geometry
+- AlgebraWordProblems
+- Inequalities
+- AlgebraicExpressions
+- SystemsOfEquations
+- AbsoluteValues
+- Exponents
+
+SUPPORTED_SAMPLE_ARCHETYPES:
+- FractionAddition
+- SimultaneousLinearEquations
+- TriangleProperties
+- SignedNumericOperations
+- PolynomialFactoring
+- MapScaleConversion
+- RectangularPrismVolume
+- MixedPriceProblems
+- PercentOfTotalTime
+- DistanceInPartialTime
+
+CURRICULUM_RULE:
+Every lesson must map to OfficialArithmeticReasoning, OfficialMathKnowledge, DirectSampleArchetype, PrerequisiteSkill, or MentalForgeSupportSkill.

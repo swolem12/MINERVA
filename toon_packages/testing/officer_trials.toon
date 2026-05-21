@@ -1,0 +1,21 @@
+MODULE: OFFICER_TRIALS
+
+OBJECTIVE:
+Simulate timed AFOQT quantitative performance.
+
+SECTIONS:
+- ArithmeticReasoning
+- MathKnowledge
+
+MODES:
+- SectionPractice
+- MixedQuantitativeTrial
+- FullPressureTrial
+- WeaknessFocusedTrial
+
+OUTPUTS:
+- Accuracy
+- TimePerQuestion
+- PacingReport
+- ErrorTaxonomy
+- RecommendedTrainingPlan

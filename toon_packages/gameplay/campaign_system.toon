@@ -1,0 +1,26 @@
+MODULE: CAMPAIGN_SYSTEM
+
+OBJECTIVE:
+Organize learning progression into satisfying ARPG-style campaigns.
+
+CAMPAIGNS:
+- ArithmeticFrontier
+- RatioRidge
+- AlgebraCitadel
+- GeometrySector
+- MentalForge
+- OfficerTrials
+
+MISSION_TYPES:
+- LessonMission
+- DrillMission
+- BossMission
+- ReviewMission
+- SimulationMission
+
+REWARDS:
+- XP
+- RankProgress
+- CosmeticBadges
+- FormulaCards
+- MasteryTitles

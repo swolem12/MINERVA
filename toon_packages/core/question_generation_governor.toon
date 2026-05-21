@@ -1,0 +1,46 @@
+MODULE: QUESTION_GENERATION_GOVERNOR
+
+OBJECTIVE:
+Ensure all generated questions are AFOQT-relevant, solvable, validated, and properly tagged.
+
+REQUIRED_FIELDS:
+- QuestionID
+- Section
+- ScopeClassification
+- SkillTag
+- Difficulty
+- Prompt
+- AnswerChoices
+- CorrectAnswer
+- Explanation
+- EstimatedSolveTime
+- CommonTrap
+- Prerequisites
+
+SCOPE_CLASSIFICATION_REQUIRED:
+- OfficialArithmeticReasoning
+- OfficialMathKnowledge
+- DirectSampleArchetype
+- PrerequisiteSkill
+- MentalForgeSupportSkill
+
+VALIDATION_RULES:
+- OneCorrectAnswerOnly
+- NoAmbiguousWording
+- NoIrrelevantMath
+- AFOQTScopeOnly
+- ExplanationRequired
+- DifficultyTagRequired
+- AnswerChoicesMustBePlausible
+- NoCalculatorAssumption
+
+REJECT_IF:
+- OffScope
+- TooAdvanced
+- CollegeMathOnly
+- NotNeededForAFOQT
+- NotConnectedToARorMK
+- UnsupportedByVerifiedScope
+- Ambiguous
+- InvalidMath
+- BadAnswerChoices

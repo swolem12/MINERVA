@@ -1,0 +1,24 @@
+MODULE: PACING_AND_SKIP_STRATEGY
+
+OBJECTIVE:
+Train timed AFOQT section strategy.
+
+DECISION_TYPES:
+- SolveImmediately
+- Estimate
+- SkipAndReturn
+- EliminateChoices
+- GuessStrategically
+
+METRICS:
+- TimeSpentBeforeSkip
+- ReturnSuccessRate
+- OverthinkingRate
+- EasyQuestionMissRate
+- FinalMinuteAccuracy
+
+COACHING:
+- FlagTimeSinkQuestions
+- TeachOnePassStrategy
+- TeachAnswerElimination
+- TeachEstimationSafety

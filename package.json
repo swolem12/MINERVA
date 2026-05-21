@@ -1,0 +1,27 @@
+{
+  "name": "minerva",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "packages/*",
+    "backend/functions",
+    "mobile"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=frontend",
+    "lint": "npm run lint --workspace=frontend",
+    "validate:questions": "tsx scripts/validate-question-bank.ts",
+    "validate:content": "npm run build:core && tsx scripts/validate-content.ts",
+    "firebase:emulators": "npx firebase-tools@latest emulators:start",
+    "firebase:deploy:rules": "npx firebase-tools@latest deploy --only firestore:rules",
+    "firebase:deploy": "npm run build:core && npm run build:functions && npx firebase-tools@latest deploy --only firestore:rules,functions",
+    "build:core": "npm run build --workspace=@minerva/core",
+    "build:functions": "npm run build --workspace=minerva-functions"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5"
+  }
+}

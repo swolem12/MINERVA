@@ -1,0 +1,12 @@
+MODULE: CONFIDENCE_RECOVERY
+
+OBJECTIVE:
+Rebuild math confidence through safe failure, visible progress, and useful feedback.
+
+SYSTEMS:
+- ConfidenceMeter
+- EncouragingFeedback
+- RecoveryMissions
+- StreakRepair
+- LowPressurePractice
+- ErrorAsIntelFraming

@@ -1,0 +1,20 @@
+MODULE: TACTICAL_HUD
+
+OBJECTIVE:
+Create a futuristic officer academy HUD interface without sacrificing readability.
+
+HUD_ELEMENTS:
+- XPBar
+- RankBadge
+- DailyMissionTracker
+- SkillRadar
+- TimerRing
+- ComboCounter
+- MasteryMeter
+- TacticalMapNode
+
+RULES:
+- MotionShouldInform
+- AvoidVisualClutter
+- PrioritizeReadableMath
+- MobileFirstSpacing

@@ -1,0 +1,38 @@
+MODULE: LEARNING_ENGINE
+
+OBJECTIVE:
+Deliver adaptive AFOQT-focused math instruction through structured lesson flows.
+
+LESSON_FLOW:
+1 ConceptIntroduction
+2 VisualDemonstration
+3 GuidedWalkthrough
+4 AssistedPractice
+5 IndependentPractice
+6 TimedCombatDrill
+7 BossChallenge
+8 MasteryCheck
+9 SpacedReviewAssignment
+
+LESSON_CARD_FIELDS:
+- LessonID
+- Section
+- SkillTags
+- Prerequisites
+- DifficultyTier
+- ExplanationELI5
+- VisualModel
+- GuidedExamples
+- PracticeItems
+- TimedItems
+- CommonTraps
+- MasteryCriteria
+
+ADULT_LEARNING_RULES:
+- ReduceMathAnxiety
+- UsePlainEnglish
+- BuildFromConcreteToAbstract
+- ExplainWhyStepsWork
+- UseTacticalAnalogiesOnlyWhenHelpful
+- NeverShameFailure
+- CelebrateIncrementalProgress
