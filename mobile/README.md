@@ -7,10 +7,25 @@
 
 ## Build Flow
 
-1. Build the web app: `npm run build --workspace=frontend`
-2. Sync to Android: `npm run prepare:android --workspace=minerva-mobile`
-3. Open Android Studio: `npm run open:android --workspace=minerva-mobile`
-4. Build debug APK from Android Studio
+1. Build the web app and sync to Android:
+
+   ```bash
+   npm run build:mobile
+   ```
+
+2. Build a debug APK (requires Android SDK + JDK):
+
+   ```bash
+   npm run build:apk
+   ```
+
+   Output: `mobile/android/app/build/outputs/apk/debug/app-debug.apk`
+
+3. Open in Android Studio (optional):
+
+   ```bash
+   npm run open:android --workspace=minerva-mobile
+   ```
 
 ## PWA
 

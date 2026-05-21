@@ -7,7 +7,8 @@
     "sync": "cap sync android",
     "open:android": "cap open android",
     "build:web": "npm run build --workspace=frontend",
-    "prepare:android": "npm run build:web && cap sync android"
+    "prepare:android": "npm run build:web && cap sync android",
+    "build:apk": "npm run prepare:android && cd android && .\\gradlew.bat assembleDebug"
   },
   "dependencies": {
     "@capacitor/android": "^7.0.0",

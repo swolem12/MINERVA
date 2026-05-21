@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MINERVA</string>
+    <string name="title_activity_main">MINERVA</string>
+    <string name="package_name">com.minerva.afoqt</string>
+    <string name="custom_url_scheme">com.minerva.afoqt</string>
+</resources>

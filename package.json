@@ -11,6 +11,8 @@
   "scripts": {
     "dev": "npm run dev --workspace=frontend",
     "build": "npm run build --workspace=frontend",
+    "build:mobile": "npm run prepare:android --workspace=minerva-mobile",
+    "build:apk": "npm run build:apk --workspace=minerva-mobile",
     "lint": "npm run lint --workspace=frontend",
     "validate:questions": "tsx scripts/validate-question-bank.ts",
     "validate:content": "npm run build:core && tsx scripts/validate-content.ts",
