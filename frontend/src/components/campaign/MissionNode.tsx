@@ -30,8 +30,8 @@ export function MissionNode({ node, href, index }: MissionNodeProps) {
       >
         <div className="glass-panel w-full max-w-sm px-5 py-4 text-center opacity-70">
           <span className="text-2xl grayscale">{node.icon ?? "🔒"}</span>
-          <p className="mt-2 font-semibold text-slate">{node.title}</p>
-          <p className="text-xs text-slate">Complete the previous lesson first</p>
+          <p className="mt-2 font-semibold text-muted">{node.title}</p>
+          <p className="text-xs text-muted">Complete the previous lesson first</p>
         </div>
       </motion.div>
     );
@@ -49,8 +49,8 @@ export function MissionNode({ node, href, index }: MissionNodeProps) {
       } ${node.completed ? "opacity-75" : ""}`}
     >
       <span className="text-2xl">{node.completed ? "✅" : node.icon ?? "📖"}</span>
-      <p className="mt-2 text-base font-bold text-warm-white">{node.title}</p>
-      <p className="text-xs font-medium text-slate">
+      <p className="mt-2 text-base font-bold text-primary">{node.title}</p>
+      <p className="text-xs font-medium text-muted">
         {node.type} · +{node.xpReward} XP
       </p>
       {node.current && (

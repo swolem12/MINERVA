@@ -133,7 +133,7 @@ if (!trialsSrc.includes("createTrial") || !trialsSrc.includes("onClick")) {
 }
 
 const missionsSrc = readFileSync(join(FRONTEND, "missions/page.tsx"), "utf-8");
-if (!missionsSrc.includes("router.push") && !missionsSrc.includes("<Link href={`/practice")) {
+if (!missionsSrc.includes("m.href") && !missionsSrc.includes("router.push")) {
   issues.push({
     level: "warn",
     code: "MISSIONS_NOT_PLAYABLE",

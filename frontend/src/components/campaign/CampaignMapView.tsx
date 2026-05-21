@@ -17,11 +17,12 @@ function nodeHref(node: { type: string; lessonId?: string; id: string }): string
   if (node.type === "lesson" && node.lessonId) return `/lesson/${node.lessonId}?node=${node.id}`;
   if (node.type === "boss") return `/boss/${node.id}`;
   if (node.type === "drill") return `/forge?node=${node.id}`;
+  if (node.type === "review") return `/practice/review?node=${node.id}`;
   return "/campaign";
 }
 
 export function CampaignMapView() {
-  const { profile, completedNodes } = usePlayerStore();
+  const { profile, completedNodes, getDueReviews } = usePlayerStore();
   const [activeRegionIndex, setActiveRegionIndex] = useState(0);
 
   const regions = resolveCampaignProgress(completedNodes, profile.startingRegion);
@@ -35,10 +36,13 @@ export function CampaignMapView() {
     [region]
   );
 
+  const dueReview = getDueReviews()[0];
+  const reviewHref = dueReview ? `/practice/${dueReview.skillTag}` : undefined;
+
   if (!region) {
     return (
       <AppPage title="Learn">
-        <p className="text-sandstone">No units available yet.</p>
+        <p className="text-secondary">No units available yet.</p>
       </AppPage>
     );
   }
@@ -46,12 +50,12 @@ export function CampaignMapView() {
   return (
     <AppPage noPadding className="pb-4">
       {/* Khan-style greeting header */}
-      <div className="border-b border-black/[0.06] bg-charcoal-panel px-4 py-4">
+      <div className="border-b border-black/[0.06] bg-surface-card px-4 py-4">
         <div className="mx-auto max-w-lg">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-sandstone">Welcome back</p>
-              <h1 className="text-xl font-bold text-warm-white">{profile.displayName}</h1>
+              <p className="text-sm text-secondary">Welcome back</p>
+              <h1 className="text-xl font-bold text-primary">{profile.displayName}</h1>
             </div>
             <div className="flex items-center gap-2">
               <span className="rounded-full bg-brand-soft px-3 py-1 text-sm font-bold text-cardinal">
@@ -68,16 +72,18 @@ export function CampaignMapView() {
       <div className="mx-auto max-w-lg space-y-6 px-4 pt-5">
         <ContinueLearningCard
           displayName={profile.displayName}
-          node={currentNode}
+          node={dueReview ? undefined : currentNode}
           href={currentNode ? nodeHref(currentNode) : "/campaign"}
           unitTitle={region.title}
           unitProgress={region.progress}
+          dueReview={dueReview}
+          reviewHref={reviewHref}
         />
 
         {/* Duolingo-style unit selector */}
         <section>
-          <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate">Units</h2>
-          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+          <h2 className="mb-3 text-sm font-bold uppercase tracking-wide text-muted">Units</h2>
+          <div className="unit-tabs-scroll flex gap-2 overflow-x-auto pb-1 scrollbar-none">
             {unlocked.map((r, i) => (
               <button
                 key={r.id}
@@ -86,7 +92,7 @@ export function CampaignMapView() {
                 className={`shrink-0 rounded-xl px-4 py-2.5 text-left transition-all ${
                   i === activeRegionIndex
                     ? "bg-cardinal text-white shadow-sm"
-                    : "card text-warm-white hover:border-cardinal/30"
+                    : "card text-primary hover:border-cardinal/30"
                 }`}
               >
                 <p className="text-xs font-medium opacity-80">Unit {i + 1}</p>
@@ -101,8 +107,8 @@ export function CampaignMapView() {
                 key={r.id}
                 className="card shrink-0 cursor-not-allowed px-4 py-2.5 opacity-50"
               >
-                <p className="text-xs text-slate">🔒 Locked</p>
-                <p className="text-sm font-bold text-slate">{r.title}</p>
+                <p className="text-xs text-muted">🔒 Locked</p>
+                <p className="text-sm font-bold text-muted">{r.title}</p>
               </div>
             ))}
           </div>
@@ -110,9 +116,9 @@ export function CampaignMapView() {
 
         {/* Unit detail + path */}
         <section className="card p-4">
-          <h2 className="text-lg font-bold text-warm-white">{region.title}</h2>
-          <p className="mt-0.5 text-sm text-sandstone">{region.tagline}</p>
-          <p className="mt-2 text-sm leading-relaxed text-slate">{region.description}</p>
+          <h2 className="text-lg font-bold text-primary">{region.title}</h2>
+          <p className="mt-0.5 text-sm text-secondary">{region.tagline}</p>
+          <p className="mt-2 text-sm leading-relaxed text-muted">{region.description}</p>
 
           <div className="mt-6 border-t border-black/[0.06] pt-4">
             <UnitPathMap

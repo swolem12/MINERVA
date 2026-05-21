@@ -9,6 +9,7 @@ export interface DailyMission {
   xpReward: number;
   completed: boolean;
   progress: number;
+  href: string;
 }
 
 export interface DailyMissionEngine {
@@ -30,32 +31,35 @@ export function createDailyMissionEngine(): DailyMissionEngine {
         {
           id: `${date}-warmup`,
           title: "Morning Warmup",
-          description: "Complete 5 mental math problems",
+          description: "Complete 5 quick mental math problems",
           targetCount: 5,
           skillTag: "addition",
           xpReward: 50,
           completed: false,
           progress: 0,
+          href: "/forge?node=forge-addition",
         },
         {
           id: `${date}-review`,
-          title: "Weakness Review",
+          title: "Skill Review",
           description: `Practice ${weakSkills[0]?.replace(/_/g, " ") ?? "percentages"}`,
           targetCount: 3,
           skillTag: weakSkills[0] ?? "percentages",
           xpReward: 75,
           completed: false,
           progress: 0,
+          href: `/practice/${weakSkills[0] ?? "percentages"}`,
         },
         {
           id: `${date}-streak`,
-          title: "Maintain Streak",
-          description: "Complete any lesson or drill today",
+          title: "Daily Activity",
+          description: "Complete any lesson or quick drill today",
           targetCount: 1,
           skillTag: "percentages",
           xpReward: 25,
           completed: false,
           progress: 0,
+          href: "/campaign",
         },
       ];
       return missions;

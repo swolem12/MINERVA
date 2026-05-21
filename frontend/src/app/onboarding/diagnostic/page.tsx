@@ -20,6 +20,7 @@ export default function DiagnosticPage() {
   const [attempts, setAttempts] = useState<QuestionAttempt[]>([]);
   const [phase, setPhase] = useState<"intro" | "questions" | "results">("intro");
   const [result, setResult] = useState<ReturnType<ReturnType<typeof createDiagnosticEngine>["processAttempts"]> | null>(null);
+  const [pendingContinue, setPendingContinue] = useState(false);
   const { applyDiagnostic, skipDiagnostic, profile } = usePlayerStore();
   const router = useRouter();
 
@@ -46,6 +47,18 @@ export default function DiagnosticPage() {
     [applyDiagnostic]
   );
 
+  const handleContinue = useCallback(() => {
+    setPendingContinue(false);
+    setAttempts((current) => {
+      if (index + 1 >= DIAGNOSTIC_QUESTIONS.length) {
+        finishDiagnostic(current);
+      } else {
+        setIndex((i) => i + 1);
+      }
+      return current;
+    });
+  }, [index, finishDiagnostic]);
+
   const handleSubmit = useCallback(
     (selectedAnswer: string, confidence: 1 | 2 | 3 | 4 | 5, timeMs: number) => {
       const q = DIAGNOSTIC_QUESTIONS[index];
@@ -64,24 +77,17 @@ export default function DiagnosticPage() {
               q.correctAnswer
             ),
       };
-      const nextAttempts = [...attempts, attempt];
-      setAttempts(nextAttempts);
-      setTimeout(() => {
-        if (index + 1 >= DIAGNOSTIC_QUESTIONS.length) {
-          finishDiagnostic(nextAttempts);
-        } else {
-          setIndex((i) => i + 1);
-        }
-      }, 1400);
+      setAttempts((prev) => [...prev, attempt]);
+      setPendingContinue(true);
     },
-    [index, attempts, finishDiagnostic]
+    [index]
   );
 
   if (phase === "intro") {
     return (
       <AppPage title="Placement check" subtitle={`Hi ${profile.displayName} — this takes about 5 minutes`}>
         <div className="card p-5">
-          <p className="text-sm leading-relaxed text-sandstone">
+          <p className="text-sm leading-relaxed text-secondary">
             12 questions on core math topics. Wrong answers only help us pick your starting unit — not a grade.
           </p>
         </div>
@@ -99,13 +105,13 @@ export default function DiagnosticPage() {
     return (
       <AppPage title="You're all set">
         <div className="card p-5">
-          <p className="text-sm text-sandstone">Accuracy</p>
+          <p className="text-sm text-secondary">Accuracy</p>
           <p className="text-3xl font-bold text-cardinal">{Math.round(result.overallAccuracy * 100)}%</p>
-          <p className="mt-3 text-sm text-sandstone">
-            Starting unit: <span className="font-semibold text-warm-white">{result.startingRegion.replace(/_/g, " ")}</span>
+          <p className="mt-3 text-sm text-secondary">
+            Starting unit: <span className="font-semibold text-primary">{result.startingRegion.replace(/_/g, " ")}</span>
           </p>
           {result.remediationPath.length > 0 && (
-            <p className="mt-2 text-sm text-sandstone">
+            <p className="mt-2 text-sm text-secondary">
               Focus first: {result.remediationPath.slice(0, 3).map((s) => s.replace(/_/g, " ")).join(", ")}
             </p>
           )}
@@ -119,7 +125,13 @@ export default function DiagnosticPage() {
 
   return (
     <AppPage title="Placement check" subtitle={`Question ${index + 1} of ${DIAGNOSTIC_QUESTIONS.length}`}>
-      <div className="mb-4 h-2 overflow-hidden rounded-full bg-surface-muted">
+      <div
+        className="mb-4 h-2 overflow-hidden rounded-full bg-surface-muted"
+        role="progressbar"
+        aria-valuenow={Math.round(progress * 100)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      >
         <motion.div
           className="h-full bg-cardinal"
           animate={{ width: `${progress * 100}%` }}
@@ -127,11 +139,15 @@ export default function DiagnosticPage() {
       </div>
       <AnimatePresence mode="wait">
         <motion.div key={question.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-          <QuestionCard question={question} onSubmit={handleSubmit} />
+          <QuestionCard
+            question={question}
+            onSubmit={handleSubmit}
+            onContinue={pendingContinue ? handleContinue : undefined}
+          />
         </motion.div>
       </AnimatePresence>
       <div className="mt-4 text-center">
-        <button type="button" onClick={handleSkip} className="text-sm font-semibold text-slate hover:text-cardinal">
+        <button type="button" onClick={handleSkip} className="text-sm font-semibold text-muted hover:text-cardinal">
           Skip placement check
         </button>
       </div>

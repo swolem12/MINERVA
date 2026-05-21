@@ -16,8 +16,8 @@ export function AppPage({ children, title, subtitle, className = "", noPadding }
     <div className={`mx-auto w-full max-w-lg ${noPadding ? "" : "px-4 py-5"} ${className}`}>
       {(title || subtitle) && (
         <header className="mb-5">
-          {title && <h1 className="text-2xl font-bold tracking-tight text-warm-white">{title}</h1>}
-          {subtitle && <p className="mt-1 text-sm text-sandstone">{subtitle}</p>}
+          {title && <h1 className="text-2xl font-bold tracking-tight text-primary">{title}</h1>}
+          {subtitle && <p className="mt-1 text-sm text-secondary">{subtitle}</p>}
         </header>
       )}
       {children}

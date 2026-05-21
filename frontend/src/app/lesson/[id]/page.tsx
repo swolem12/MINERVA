@@ -1,6 +1,6 @@
 "use client";
 
-import { use, useState, useMemo, Suspense } from "react";
+import { use, useState, useMemo, Suspense, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -9,10 +9,9 @@ import {
   createLessonEngine,
   getStepLabel,
   createGuidedPracticeEngine,
-  createRetentionEngine,
   CAMPAIGN_DEFINITION,
 } from "@minerva/core";
-import type { QuestionAttempt, LessonStepType } from "@minerva/core";
+import type { QuestionAttempt, LessonStepType, SkillTag } from "@minerva/core";
 import { usePlayerStore } from "@/lib/player/player-store";
 import { LessonTopBar } from "@/components/shell/TacticalHUD";
 import { TacticalButton } from "@/components/ui/TacticalButton";
@@ -47,10 +46,9 @@ function LessonContent({ id }: { id: string }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const nodeId = searchParams.get("node") ?? id;
-  const { completeNode } = usePlayerStore();
+  const { completeNode, recordQuestionAttempt } = usePlayerStore();
   const engine = useMemo(() => createLessonEngine(), []);
   const practiceEngine = useMemo(() => createGuidedPracticeEngine(), []);
-  const retentionEngine = useMemo(() => createRetentionEngine(), []);
 
   const [state, setState] = useState(() => ({
     lessonId: id,
@@ -62,11 +60,13 @@ function LessonContent({ id }: { id: string }) {
   const [hintsUsed, setHintsUsed] = useState(0);
   const [complete, setComplete] = useState(false);
   const [xpEarned, setXpEarned] = useState(0);
+  const [pendingAdvance, setPendingAdvance] = useState(false);
+  const [latestAttempts, setLatestAttempts] = useState<QuestionAttempt[]>([]);
 
   if (!lesson) {
     return (
       <div className="mx-auto max-w-lg px-4 py-10 text-center">
-        <p className="text-lg font-bold text-warm-white">Lesson not found</p>
+        <p className="text-lg font-bold text-primary">Lesson not found</p>
         <div className="mt-4">
           <TacticalButton onClick={() => router.push("/campaign")}>Back to Learn</TacticalButton>
         </div>
@@ -81,19 +81,41 @@ function LessonContent({ id }: { id: string }) {
   const currentQuestion = questionIds[questionIndex] ? getQuestionById(questionIds[questionIndex]) : undefined;
   const showHints = stepType === "assisted_practice";
   const progress = (state.currentStepIndex + (isPracticeStep ? (questionIndex + 0.5) / Math.max(questionIds.length, 1) : 0)) / lesson.steps.length;
+  const skillTag = lesson.skillTags[0] as SkillTag;
 
   const nodeMeta = CAMPAIGN_DEFINITION.flatMap((r) => r.nodes).find((n) => n.id === nodeId);
   const xpReward = nodeMeta?.xpReward ?? 100;
 
-  const finishLesson = () => {
+  const finishLesson = useCallback(() => {
     setComplete(true);
     setXpEarned(xpReward);
     completeNode(nodeId, lesson.id, xpReward);
-    retentionEngine.scheduleReview(lesson.skillTags[0], true);
-  };
+  }, [completeNode, nodeId, lesson, xpReward]);
+
+  const advanceAfterQuestion = useCallback(() => {
+    setPendingAdvance(false);
+    const questionIds = step.questions ?? [];
+    if (questionIndex + 1 >= questionIds.length) {
+      const newState = engine.recordStepResult(state, state.currentStepIndex, latestAttempts);
+      setQuestionIndex(0);
+      setStepAttempts([]);
+      setLatestAttempts([]);
+      setHintsUsed(0);
+      if (engine.isLessonComplete(newState, lesson)) {
+        setState(newState);
+        finishLesson();
+      } else {
+        setState(engine.advanceStep(newState));
+      }
+    } else {
+      setQuestionIndex((i) => i + 1);
+      setStepAttempts([]);
+      setLatestAttempts([]);
+    }
+  }, [engine, lesson, questionIndex, state, latestAttempts, finishLesson, step.questions]);
 
   const advanceStep = () => {
-    if (stepType === "timed_combat_drill" && !engine.canAdvanceToTimedDrill(state)) return;
+    if (stepType === "timed_combat_drill" && !engine.canAdvanceToTimedDrill(state, lesson)) return;
     const next = engine.advanceStep(state);
     setState(next);
     setQuestionIndex(0);
@@ -119,30 +141,22 @@ function LessonContent({ id }: { id: string }) {
     };
     const nextAttempts = [...stepAttempts, attempt];
     setStepAttempts(nextAttempts);
-    setTimeout(() => {
-      if (questionIndex + 1 >= questionIds.length) {
-        const newState = engine.recordStepResult(state, state.currentStepIndex, nextAttempts);
-        setState(newState);
-        if (engine.isLessonComplete(newState, lesson)) finishLesson();
-        else advanceStep();
-      } else {
-        setQuestionIndex((i) => i + 1);
-      }
-    }, 1400);
+    setLatestAttempts(nextAttempts);
+    recordQuestionAttempt(attempt, skillTag);
+    setPendingAdvance(true);
   };
 
   if (complete) {
     return (
-      <div className="flex min-h-dvh flex-col items-center justify-center px-4">
+      <div className="flex min-h-dvh flex-col items-center justify-center px-4 bg-surface-page">
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           className="card w-full max-w-sm p-8 text-center"
         >
-          <p className="text-5xl">🎉</p>
-          <h2 className="mt-4 text-2xl font-bold text-warm-white">Lesson complete!</h2>
+          <h2 className="text-2xl font-bold text-primary">You finished {skillTag.replace(/_/g, " ")}!</h2>
           <p className="mt-2 font-semibold text-cardinal">+{xpEarned} XP</p>
-          <p className="mt-1 text-sm text-sandstone">{lesson.title}</p>
+          <p className="mt-1 text-sm text-secondary">{lesson.title}</p>
         </motion.div>
         <div className="mt-6 w-full max-w-sm">
           <TacticalButton onClick={() => router.push("/campaign")}>Continue on path</TacticalButton>
@@ -151,11 +165,11 @@ function LessonContent({ id }: { id: string }) {
     );
   }
 
-  if (stepType === "timed_combat_drill" && !engine.canAdvanceToTimedDrill(state)) {
+  if (stepType === "timed_combat_drill" && !engine.canAdvanceToTimedDrill(state, lesson)) {
     return (
       <div className="mx-auto max-w-lg px-4 py-10 text-center">
-        <p className="text-lg font-bold text-warm-white">Timed practice locked</p>
-        <p className="mt-2 text-sm text-sandstone">Score 80%+ on guided practice first.</p>
+        <p className="text-lg font-bold text-primary">Timed practice locked</p>
+        <p className="mt-2 text-sm text-secondary">Score 80%+ on guided practice first.</p>
         <div className="mt-6">
           <TacticalButton onClick={() => router.push("/campaign")}>Back to Learn</TacticalButton>
         </div>
@@ -164,18 +178,18 @@ function LessonContent({ id }: { id: string }) {
   }
 
   return (
-    <div className="flex min-h-dvh flex-col bg-charcoal">
-      <LessonTopBar title={lesson.title} progress={progress} />
+    <div className="flex min-h-dvh flex-col bg-surface-page">
+      <LessonTopBar title={lesson.title} progress={progress} estimateMin={8} />
 
       <div className="mx-auto w-full max-w-lg flex-1 px-4 py-5">
         <p className="text-xs font-bold uppercase tracking-wide text-cardinal">
           {getStepLabel(stepType)} · Step {state.currentStepIndex + 1} of {lesson.steps.length}
         </p>
-        <h2 className="mt-1 text-xl font-bold text-warm-white">{step.title}</h2>
+        <h2 className="mt-1 text-xl font-bold text-primary">{step.title}</h2>
 
         {!isPracticeStep && (
           <div className="card mt-4 p-4 text-left">
-            <p className="whitespace-pre-line text-base leading-relaxed text-warm-white">{step.content}</p>
+            <p className="whitespace-pre-line text-base leading-relaxed text-primary">{step.content}</p>
           </div>
         )}
 
@@ -188,7 +202,7 @@ function LessonContent({ id }: { id: string }) {
         {stepType === "guided_walkthrough" && (
           <div className="card mt-4 space-y-2 p-4 text-left">
             {step.content.split("\n").map((line, i) => (
-              <MathDisplay key={i} size="sm" className="block text-sandstone">
+              <MathDisplay key={i} size="sm" className="block text-secondary">
                 {line}
               </MathDisplay>
             ))}
@@ -207,9 +221,11 @@ function LessonContent({ id }: { id: string }) {
               <QuestionCard
                 question={currentQuestion}
                 onSubmit={handleQuestionSubmit}
+                onContinue={pendingAdvance ? advanceAfterQuestion : undefined}
                 showHints={showHints}
                 hint={showHints ? practiceEngine.getHint(currentQuestion, hintsUsed) : null}
                 onRequestHint={() => setHintsUsed((h) => h + 1)}
+                onStuck={showHints ? () => undefined : undefined}
               />
             </motion.div>
           )}
@@ -217,7 +233,7 @@ function LessonContent({ id }: { id: string }) {
       </div>
 
       {!isPracticeStep && (
-        <div className="sticky bottom-0 border-t border-black/[0.06] bg-charcoal-panel px-4 py-4">
+        <div className="sticky bottom-0 border-t border-black/[0.06] bg-surface-card px-4 py-4">
           <div className="mx-auto max-w-lg">
             <TacticalButton className="max-w-none" onClick={advanceStep}>
               {state.currentStepIndex >= lesson.steps.length - 1 ? "Complete lesson" : "Continue"}
@@ -234,7 +250,7 @@ export default function LessonPage({ params }: { params: Promise<{ id: string }>
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-dvh items-center justify-center text-sandstone">Loading…</div>
+        <div className="flex min-h-dvh items-center justify-center text-secondary">Loading…</div>
       }
     >
       <LessonContent id={id} />

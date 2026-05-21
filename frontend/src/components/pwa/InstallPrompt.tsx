@@ -40,13 +40,13 @@ export function InstallPrompt() {
 
   return (
     <div className="mt-8 w-full rounded-xl border border-muted-gold/40 bg-slate/20 p-4 text-center">
-      <p className="mb-3 text-sm text-sandstone">Install MINERVA for offline study</p>
+      <p className="mb-3 text-sm text-secondary">Install MINERVA for offline study</p>
       <div className="flex flex-col items-center gap-2">
         <TacticalButton onClick={install}>Install App</TacticalButton>
         <button
           type="button"
           onClick={() => setDismissed(true)}
-          className="text-xs text-slate underline"
+          className="text-xs text-muted underline"
         >
           Not now
         </button>

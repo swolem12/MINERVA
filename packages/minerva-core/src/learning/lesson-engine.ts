@@ -8,7 +8,7 @@ export interface LessonEngineState {
 
 export interface LessonEngine {
   getCurrentStep(state: LessonEngineState, lesson: Lesson): Lesson["steps"][0] | null;
-  canAdvanceToTimedDrill(state: LessonEngineState): boolean;
+  canAdvanceToTimedDrill(state: LessonEngineState, lesson: Lesson): boolean;
   advanceStep(state: LessonEngineState): LessonEngineState;
   recordStepResult(
     state: LessonEngineState,
@@ -26,9 +26,12 @@ export function createLessonEngine(): LessonEngine {
       return lesson.steps[state.currentStepIndex] ?? null;
     },
 
-    canAdvanceToTimedDrill(state) {
-      const practiceSteps = [3, 4];
-      const results = practiceSteps.map((i) => state.stepResults[i]);
+    canAdvanceToTimedDrill(state, lesson) {
+      const assistedIdx = lesson.steps.findIndex((s) => s.type === "assisted_practice");
+      const independentIdx = lesson.steps.findIndex((s) => s.type === "independent_practice");
+      const indices = [assistedIdx, independentIdx].filter((i) => i >= 0);
+      if (indices.length === 0) return true;
+      const results = indices.map((i) => state.stepResults[i]);
       if (results.some((r) => !r?.completed)) return false;
       const avgAccuracy =
         results.reduce((s, r) => s + (r?.accuracy ?? 0), 0) / results.length;
@@ -63,13 +66,13 @@ export function createLessonEngine(): LessonEngine {
 
 export function getStepLabel(type: LessonStepType): string {
   const labels: Record<LessonStepType, string> = {
-    concept_introduction: "Mission Brief",
-    visual_demonstration: "Visual Demo",
-    guided_walkthrough: "Guided Operation",
-    assisted_practice: "Assisted Drill",
-    independent_practice: "Solo Drill",
-    timed_combat_drill: "Timed Combat",
-    mastery_check: "Mastery Check",
+    concept_introduction: "Concept",
+    visual_demonstration: "Visual",
+    guided_walkthrough: "Walkthrough",
+    assisted_practice: "Guided practice",
+    independent_practice: "Practice",
+    timed_combat_drill: "Timed practice",
+    mastery_check: "Check your understanding",
   };
   return labels[type];
 }

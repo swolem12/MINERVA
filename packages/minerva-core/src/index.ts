@@ -70,6 +70,14 @@ export type { DailyMissionEngine, DailyMission } from "./gameplay/daily-missions
 export { createBossBattleEngine } from "./gameplay/boss-battles";
 export type { BossBattleEngine, BossBattle } from "./gameplay/boss-battles";
 
+export {
+  getQuestionsForBossNode,
+  getBossTitle,
+  DRILL_NODE_SKILLS,
+} from "./gameplay/boss-question-sets";
+
+export { REVIEW_NODE_SKILLS } from "./gameplay/review-question-sets";
+
 export { createOfficerTrialEngine } from "./testing/officer-trials";
 export type { OfficerTrialEngine, OfficerTrial } from "./testing/officer-trials";
 
@@ -90,10 +98,11 @@ export type { FirebaseSyncEngine, SyncQueueItem, SyncOperation } from "./sync/fi
 
 import seedQuestions from "./data/seed-questions.json";
 import extraQuestions from "./data/extra-questions.json";
+import bulkQuestions from "./data/bulk-questions.json";
 import type { MinervaQuestion, Lesson } from "./types";
 import { LESSON_CATALOG, getLessonById, ALL_LESSON_IDS } from "./data/lessons/index";
 
-export const SEED_QUESTIONS = [...seedQuestions, ...extraQuestions] as MinervaQuestion[];
+export const SEED_QUESTIONS = [...seedQuestions, ...extraQuestions, ...bulkQuestions] as MinervaQuestion[];
 export const DIAGNOSTIC_QUESTIONS = SEED_QUESTIONS.filter((q) => q.id.startsWith("diag-"));
 export const PERCENTAGES_INTRO_LESSON = LESSON_CATALOG["percentages-intro"];
 export { LESSON_CATALOG, getLessonById, ALL_LESSON_IDS };

@@ -37,8 +37,8 @@ export function createBossBattleEngine(): BossBattleEngine {
         passed,
         accuracy,
         feedback: passed
-          ? "Boss defeated. Outstanding tactical performance."
-          : "Boss held the line. Review weak skills and retry.",
+          ? "You passed this chapter check. Great work!"
+          : "Review the lessons in this unit and try again when you're ready.",
       };
     },
   };

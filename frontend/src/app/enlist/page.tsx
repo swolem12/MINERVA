@@ -23,7 +23,7 @@ export default function EnlistPage() {
   };
 
   return (
-    <div className="min-h-dvh bg-charcoal">
+    <div className="min-h-dvh bg-surface-page">
       <div className="bg-cardinal px-5 py-8 text-white">
         <div className="mx-auto max-w-lg">
           <p className="text-sm font-medium text-white/80">Almost there</p>
@@ -37,10 +37,10 @@ export default function EnlistPage() {
         className="mx-auto max-w-lg px-5 py-6"
       >
         <div className="card p-5">
-          <label htmlFor="name" className="text-sm font-semibold text-warm-white">
+          <label htmlFor="name" className="text-sm font-semibold text-primary">
             What should we call you?
           </label>
-          <p className="mt-1 text-sm text-sandstone">
+          <p className="mt-1 text-sm text-secondary">
             Optional placement check finds your starting unit — or skip and begin at Foundations.
           </p>
           <input
@@ -50,7 +50,7 @@ export default function EnlistPage() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleStart()}
-            className="mt-4 w-full rounded-xl border-2 border-black/[0.1] bg-surface-muted px-4 py-3.5 text-lg text-warm-white placeholder:text-slate focus:border-cardinal focus:outline-none"
+            className="mt-4 w-full rounded-xl border-2 border-black/[0.1] bg-surface-muted px-4 py-3.5 text-lg text-primary placeholder:text-muted focus:border-cardinal focus:outline-none"
           />
           <div className="mt-5 flex flex-col gap-3">
             <TacticalButton onClick={handleStart}>Take placement check</TacticalButton>

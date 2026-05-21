@@ -20,7 +20,7 @@ export function ProgressRing({ progress, label, size = 80 }: ProgressRingProps) 
           fill="none"
           stroke="currentColor"
           strokeWidth={stroke}
-          className="text-slate/40"
+          className="text-muted/40"
         />
         <circle
           cx={size / 2}
@@ -36,7 +36,7 @@ export function ProgressRing({ progress, label, size = 80 }: ProgressRingProps) 
         />
       </svg>
       {label && (
-        <span className="text-sm font-medium text-sandstone">{label}</span>
+        <span className="text-sm font-medium text-secondary">{label}</span>
       )}
     </div>
   );

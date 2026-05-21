@@ -15,7 +15,7 @@ export default function HomePage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-dvh bg-charcoal-panel">
+    <div className="min-h-dvh bg-surface-card">
       {/* Stanford cardinal hero band */}
       <div className="bg-cardinal px-5 pb-12 pt-10 text-white">
         <div className="mx-auto max-w-lg">
@@ -36,9 +36,9 @@ export default function HomePage() {
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="-mt-6 rounded-2xl bg-charcoal-panel p-5 shadow-md"
+          className="-mt-6 rounded-2xl bg-surface-card p-5 shadow-md"
         >
-          <h2 className="text-lg font-bold text-warm-white">How it works</h2>
+          <h2 className="text-lg font-bold text-primary">How it works</h2>
           <ol className="mt-4 space-y-4">
             {STEPS.map((s) => (
               <li key={s.n} className="flex gap-4">
@@ -46,8 +46,8 @@ export default function HomePage() {
                   {s.n}
                 </span>
                 <div>
-                  <p className="font-semibold text-warm-white">{s.title}</p>
-                  <p className="mt-0.5 text-sm leading-snug text-sandstone">{s.desc}</p>
+                  <p className="font-semibold text-primary">{s.title}</p>
+                  <p className="mt-0.5 text-sm leading-snug text-secondary">{s.desc}</p>
                 </div>
               </li>
             ))}
@@ -58,7 +58,7 @@ export default function HomePage() {
           <TacticalButton className="max-w-none" onClick={() => router.push("/enlist")}>
             Get started for free
           </TacticalButton>
-          <p className="text-center text-xs text-slate">
+          <p className="text-center text-xs text-muted">
             Progress stays on your device — no account needed.
           </p>
         </div>

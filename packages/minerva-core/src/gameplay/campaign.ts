@@ -30,7 +30,8 @@ export const CAMPAIGN_DEFINITION: CampaignRegionDef[] = [
       { id: "ratios-basics", title: "Ratios & Rates", type: "lesson", lessonId: "ratios-basics", xpReward: 120, icon: "◆" },
       { id: "word-problems-ar", title: "Word Problem Strategies", type: "lesson", lessonId: "word-problems-ar", xpReward: 130, icon: "◆" },
       { id: "drill-ar-speed", title: "Quick Practice: Arithmetic", type: "drill", xpReward: 80, icon: "⚡" },
-      { id: "boss-percent-commander", title: "Chapter Check: Percentages", type: "boss", xpReward: 250, icon: "★" },
+      { id: "boss-percent-commander", title: "Chapter Check: Foundations", type: "boss", xpReward: 250, icon: "★" },
+      { id: "review-foundations", title: "Review: Number Skills", type: "review", xpReward: 60, icon: "↻" },
     ],
   },
   {
@@ -44,6 +45,7 @@ export const CAMPAIGN_DEFINITION: CampaignRegionDef[] = [
       { id: "mixtures-basics", title: "Mixture Problems", type: "lesson", lessonId: "mixtures-basics", xpReward: 130, icon: "◆" },
       { id: "unit-conversions", title: "Unit Conversions", type: "lesson", lessonId: "unit-conversions", xpReward: 100, icon: "◆" },
       { id: "boss-ratio-warlord", title: "Chapter Check: Proportions", type: "boss", xpReward: 280, icon: "★" },
+      { id: "review-proportions", title: "Review: Ratios & Mixtures", type: "review", xpReward: 60, icon: "↻" },
     ],
   },
   {
@@ -86,13 +88,13 @@ export const CAMPAIGN_DEFINITION: CampaignRegionDef[] = [
   },
   {
     id: "officer_trials",
-    title: "Practice Tests",
+    title: "Confidence Checks",
     tagline: "Timed Mixed Review",
-    description: "Full-length timed sets to see how far you've come.",
+    description: "Optional timed sets to see how far you've come.",
     unlockAfterRegion: "geometry_sector",
     nodes: [
-      { id: "trial-ar", title: "Arithmetic Reasoning Test", type: "boss", xpReward: 400, icon: "📝" },
-      { id: "trial-mk", title: "Math Knowledge Test", type: "boss", xpReward: 400, icon: "📝" },
+      { id: "trial-ar", title: "Mixed Arithmetic Review", type: "boss", xpReward: 400, icon: "📝" },
+      { id: "trial-mk", title: "Mixed Algebra & Geometry Review", type: "boss", xpReward: 400, icon: "📝" },
     ],
   },
 ];

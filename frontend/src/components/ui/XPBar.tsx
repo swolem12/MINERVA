@@ -16,9 +16,16 @@ export function XPBar({ xp, xpNeeded, rank }: XPBarProps) {
     <div className="w-full">
       <div className="mb-1 flex justify-between text-xs font-semibold">
         <span className="text-cardinal">{rank}</span>
-        <span className="text-slate">{xp} XP</span>
+        <span className="text-muted">{xp} XP</span>
       </div>
-      <div className="h-2 overflow-hidden rounded-full bg-surface-muted">
+      <div
+        className="h-2 overflow-hidden rounded-full bg-surface-muted"
+        role="progressbar"
+        aria-valuenow={Math.round(pct * 100)}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label={`${rank} progress`}
+      >
         <motion.div
           className="h-full rounded-full bg-cardinal"
           initial={{ width: 0 }}
@@ -29,3 +36,4 @@ export function XPBar({ xp, xpNeeded, rank }: XPBarProps) {
     </div>
   );
 }
+

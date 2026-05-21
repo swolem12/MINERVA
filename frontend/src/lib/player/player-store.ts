@@ -2,8 +2,18 @@
 
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { CampaignRegion, DiagnosticResult, SkillTag, UserProfile } from "@minerva/core";
-import { awardXp, calculateRank } from "@minerva/core";
+import type {
+  CampaignRegion,
+  DiagnosticResult,
+  QuestionAttempt,
+  ReviewAssignment,
+  SkillTag,
+  UserProfile,
+  UserSettings,
+} from "@minerva/core";
+import { awardXp, calculateRank, createRetentionEngine } from "@minerva/core";
+
+const retentionEngine = createRetentionEngine();
 
 const DEFAULT_PROFILE = (): UserProfile => ({
   uid: "local-player",
@@ -26,12 +36,19 @@ interface PlayerStore {
   completedNodes: string[];
   completedLessons: string[];
   skillMastery: Partial<Record<SkillTag, number>>;
+  reviewQueue: ReviewAssignment[];
+  missionProgress: Record<string, number>;
+  completedMissions: string[];
 
   enlist: (displayName: string) => void;
   applyDiagnostic: (result: DiagnosticResult) => void;
   skipDiagnostic: () => void;
   completeNode: (nodeId: string, lessonId: string | null, xpReward: number) => void;
   addXp: (amount: number) => void;
+  recordQuestionAttempt: (attempt: QuestionAttempt, skillTag: SkillTag) => void;
+  updateSettings: (settings: Partial<UserSettings>) => void;
+  incrementMissionProgress: (missionId: string) => void;
+  getDueReviews: () => ReviewAssignment[];
   resetProgress: () => void;
   hydrate: (snapshot: {
     enlisted: boolean;
@@ -39,6 +56,9 @@ interface PlayerStore {
     completedNodes: string[];
     completedLessons: string[];
     skillMastery: Partial<Record<SkillTag, number>>;
+    reviewQueue?: ReviewAssignment[];
+    missionProgress?: Record<string, number>;
+    completedMissions?: string[];
   }) => void;
 }
 
@@ -50,6 +70,9 @@ export const usePlayerStore = create<PlayerStore>()(
       completedNodes: [],
       completedLessons: [],
       skillMastery: {},
+      reviewQueue: [],
+      missionProgress: {},
+      completedMissions: [],
 
       enlist: (displayName) => {
         const now = new Date().toISOString();
@@ -125,6 +148,60 @@ export const usePlayerStore = create<PlayerStore>()(
         });
       },
 
+      recordQuestionAttempt: (attempt, skillTag) => {
+        set((s) => {
+          const prevInterval = s.reviewQueue.find((r) => r.skillTag === skillTag)?.interval;
+          const assignment = retentionEngine.scheduleReview(skillTag, attempt.correct, prevInterval);
+          const filtered = s.reviewQueue.filter((r) => r.skillTag !== skillTag);
+          const weaknessMap = { ...s.profile.weaknessMap };
+          if (!attempt.correct) {
+            weaknessMap[skillTag] = (weaknessMap[skillTag] ?? 0) + 1;
+          }
+          const confidenceProfile = { ...s.profile.confidenceProfile };
+          confidenceProfile[skillTag] = attempt.confidence;
+          const mastery = { ...s.skillMastery };
+          mastery[skillTag] = Math.min(1, (mastery[skillTag] ?? 0) + (attempt.correct ? 0.1 : -0.05));
+
+          return {
+            reviewQueue: [...filtered, assignment],
+            skillMastery: mastery,
+            profile: {
+              ...s.profile,
+              weaknessMap,
+              confidenceProfile,
+              lastActiveAt: new Date().toISOString(),
+            },
+          };
+        });
+      },
+
+      updateSettings: (settings) => {
+        set((s) => ({
+          profile: {
+            ...s.profile,
+            settings: { ...s.profile.settings, ...settings },
+            lastActiveAt: new Date().toISOString(),
+          },
+        }));
+      },
+
+      incrementMissionProgress: (missionId) => {
+        set((s) => {
+          const progress = (s.missionProgress[missionId] ?? 0) + 1;
+          const completedMissions = s.completedMissions.includes(missionId)
+            ? s.completedMissions
+            : progress >= 1
+              ? [...s.completedMissions, missionId]
+              : s.completedMissions;
+          return {
+            missionProgress: { ...s.missionProgress, [missionId]: progress },
+            completedMissions,
+          };
+        });
+      },
+
+      getDueReviews: () => retentionEngine.getDueReviews(get().reviewQueue),
+
       resetProgress: () => {
         set({
           enlisted: false,
@@ -132,6 +209,9 @@ export const usePlayerStore = create<PlayerStore>()(
           completedNodes: [],
           completedLessons: [],
           skillMastery: {},
+          reviewQueue: [],
+          missionProgress: {},
+          completedMissions: [],
         });
       },
 
@@ -142,6 +222,9 @@ export const usePlayerStore = create<PlayerStore>()(
           completedNodes: snapshot.completedNodes,
           completedLessons: snapshot.completedLessons,
           skillMastery: snapshot.skillMastery,
+          reviewQueue: snapshot.reviewQueue ?? [],
+          missionProgress: snapshot.missionProgress ?? {},
+          completedMissions: snapshot.completedMissions ?? [],
         });
       },
     }),

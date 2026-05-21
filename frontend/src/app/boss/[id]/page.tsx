@@ -1,80 +1,119 @@
 "use client";
 
-import { use, useState } from "react";
+import { use, useState, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { createBossBattleEngine, SEED_QUESTIONS } from "@minerva/core";
+import {
+  createBossBattleEngine,
+  createOfficerTrialEngine,
+  getQuestionsForBossNode,
+  getBossTitle,
+} from "@minerva/core";
 import { usePlayerStore } from "@/lib/player/player-store";
-import { CenteredScreen } from "@/components/ui/CenteredScreen";
-import { MissionBriefing } from "@/components/ui/MissionBriefing";
-import { GlassPanel } from "@/components/ui/GlassPanel";
+import { AppPage } from "@/components/layout/AppPage";
+import { LessonTopBar } from "@/components/shell/TacticalHUD";
 import { TacticalButton } from "@/components/ui/TacticalButton";
 import { QuestionCard } from "@/components/learning/QuestionCard";
 
 export default function BossPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const router = useRouter();
-  const { completeNode } = usePlayerStore();
-  const engine = createBossBattleEngine();
-  const questions = SEED_QUESTIONS.filter((q) =>
-    ["percentages", "ratios", "fractions"].includes(q.skillTag)
-  ).slice(0, 5);
-  const battle = engine.createBattle(id, "Chapter Check", questions);
+  const { completeNode, recordQuestionAttempt } = usePlayerStore();
+  const isTrial = id.startsWith("trial-");
+  const bossEngine = useMemo(() => createBossBattleEngine(), []);
+  const trialEngine = useMemo(() => createOfficerTrialEngine(), []);
+  const questions = useMemo(() => getQuestionsForBossNode(id, isTrial ? 8 : 5), [id, isTrial]);
+  const title = getBossTitle(id);
+  const battle = bossEngine.createBattle(id, title, questions);
 
   const [phase, setPhase] = useState<"brief" | "fight" | "done">("brief");
   const [qIndex, setQIndex] = useState(0);
-  const [results, setResults] = useState<{ correct: boolean; timeMs: number }[]>([]);
+  const resultsRef = useRef<{ correct: boolean; timeMs: number }[]>([]);
   const [outcome, setOutcome] = useState<{ passed: boolean; feedback: string; accuracy: number } | null>(null);
+  const [pendingContinue, setPendingContinue] = useState(false);
 
   const handleAnswer = (selected: string, _c: 1 | 2 | 3 | 4 | 5, timeMs: number) => {
     const q = battle.questions[qIndex];
     const correct = selected === q.correctAnswer;
-    const next = [...results, { correct, timeMs }];
-    setResults(next);
-    setTimeout(() => {
-      if (qIndex + 1 >= battle.questions.length) {
-        const eval_ = engine.evaluateBattle(battle, next);
-        setOutcome(eval_);
-        setPhase("done");
-        if (eval_.passed) completeNode(id, null, battle.questions.length * 50 + 150);
-      } else {
-        setQIndex((i) => i + 1);
-      }
-    }, 1200);
+    recordQuestionAttempt(
+      { questionId: q.id, selectedAnswer: selected, correct, timeMs, confidence: _c, skillTags: [q.skillTag] },
+      q.skillTag
+    );
+    resultsRef.current = [...resultsRef.current, { correct, timeMs }];
+    setPendingContinue(true);
+  };
+
+  const continueQuestion = () => {
+    setPendingContinue(false);
+    if (qIndex + 1 >= battle.questions.length) {
+      const results = resultsRef.current;
+      const eval_ = isTrial
+        ? trialEngine.scoreTrial(
+            trialEngine.createTrial(
+              id === "trial-ar" ? "arithmetic_reasoning" : "math_knowledge",
+              questions
+            ),
+            results.map((r) => ({ ...r, skipped: false }))
+          )
+        : bossEngine.evaluateBattle(battle, results);
+      setOutcome({
+        passed: eval_.passed,
+        feedback: eval_.feedback,
+        accuracy: "accuracy" in eval_ ? eval_.accuracy : eval_.rawScore,
+      });
+      setPhase("done");
+      if (eval_.passed) completeNode(id, null, battle.questions.length * 50 + 150);
+    } else {
+      setQIndex((i) => i + 1);
+    }
   };
 
   if (phase === "brief") {
     return (
-      <CenteredScreen>
-        <MissionBriefing title={battle.title} subtitle="Chapter Check" badge="Review">
-          <p>{battle.questions.length} questions · {battle.timeLimitSec}s limit</p>
-          <p>Pass threshold: {Math.round(battle.passAccuracy * 100)}% accuracy</p>
-        </MissionBriefing>
-        <TacticalButton onClick={() => setPhase("fight")}>Start Check</TacticalButton>
-      </CenteredScreen>
+      <AppPage title={title} subtitle={isTrial ? "Timed mixed review" : "Chapter check"}>
+        <div className="card p-5">
+          <p className="text-secondary">{battle.questions.length} questions</p>
+          <p className="mt-2 text-sm text-muted">
+            Pass threshold: {Math.round(battle.passAccuracy * 100)}% accuracy
+          </p>
+          <div className="mt-6">
+            <TacticalButton onClick={() => setPhase("fight")}>Start</TacticalButton>
+          </div>
+        </div>
+      </AppPage>
     );
   }
 
   if (phase === "done" && outcome) {
     return (
-      <CenteredScreen>
-        <GlassPanel glow={outcome.passed} className="w-full text-center">
-          <p className="text-4xl">{outcome.passed ? "🏆" : "🛡"}</p>
-          <p className="mt-4 text-xl font-bold">{outcome.passed ? "Chapter Complete!" : "Not quite yet"}</p>
-          <p className="mt-2 text-sandstone">{outcome.feedback}</p>
-          <p className="mt-2 text-muted-gold">{Math.round(outcome.accuracy * 100)}% accuracy</p>
-        </GlassPanel>
-        <div className="mt-6">
-          <TacticalButton onClick={() => router.push("/campaign")}>Back to Learning Path</TacticalButton>
+      <AppPage title={title}>
+        <div className="card p-6 text-center">
+          <p className="text-xl font-bold text-primary">
+            {outcome.passed ? "Chapter complete!" : "Keep practicing"}
+          </p>
+          <p className="mt-2 text-secondary">{outcome.feedback}</p>
+          <p className="mt-2 font-semibold text-cardinal">{Math.round(outcome.accuracy * 100)}% accuracy</p>
         </div>
-      </CenteredScreen>
+        <div className="mt-6">
+          <TacticalButton onClick={() => router.push("/campaign")}>Back to learning path</TacticalButton>
+        </div>
+      </AppPage>
     );
   }
 
   const q = battle.questions[qIndex];
+  const progress = (qIndex + 0.5) / battle.questions.length;
+
   return (
-    <CenteredScreen maxWidth="lg">
-      <MissionBriefing title={`Question ${qIndex + 1} of ${battle.questions.length}`} badge="Chapter Check" />
-      <QuestionCard key={q.id} question={q} onSubmit={handleAnswer} />
-    </CenteredScreen>
+    <div className="flex min-h-dvh flex-col bg-surface-page">
+      <LessonTopBar title={`${title} · ${qIndex + 1}/${battle.questions.length}`} progress={progress} />
+      <div className="mx-auto w-full max-w-lg flex-1 px-4 py-5">
+        <QuestionCard
+          key={q.id}
+          question={q}
+          onSubmit={handleAnswer}
+          onContinue={pendingContinue ? continueQuestion : undefined}
+        />
+      </div>
+    </div>
   );
 }

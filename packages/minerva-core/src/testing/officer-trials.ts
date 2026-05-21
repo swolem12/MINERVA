@@ -50,8 +50,8 @@ export function createOfficerTrialEngine(): OfficerTrialEngine {
         percentileEstimate: Math.round(rawScore * 100),
         passed,
         feedback: passed
-          ? "Trial passed. You are test-ready for this section."
-          : "Trial incomplete. Focus on accuracy before speed.",
+          ? "Nice work — you passed this timed review."
+          : "Focus on accuracy first. Review weak topics and try again when ready.",
       };
     },
   };

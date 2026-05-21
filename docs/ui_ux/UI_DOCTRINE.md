@@ -1,36 +1,39 @@
 # MINERVA UI Doctrine
 
-## Primary Rule
+## Positioning
 
-All primary font layouts and text should be center aligned.
+MINERVA is a calm, adult-friendly personal math tutor — not a military game or test-prep drill app.
 
 ## Style
 
-MINERVA uses a Stanford-inspired tactical officer academy aesthetic.
+- **Stanford Cardinal** (`#8c1515`) as the primary accent
+- Light academic surfaces (page `#f7f7f7`, cards white)
+- Cool gray and sandstone for secondary text
+- Duolingo-style progression (path map, bottom nav, chunky Continue buttons)
+- Khan-style lesson clarity (left-aligned copy, readable steps)
 
-Visual language:
+## Layout
 
-- Stanford Cardinal
-- Deep Charcoal
-- Sandstone
-- Tactical Slate
-- Warm White
-- Muted Gold
+- Mobile-first, max width ~512px (`max-w-lg`)
+- Lesson and hub content is **left-aligned** for readability
+- Landing hero and profile summary may center key stats
+- Bottom tab bar: Learn · Practice · Quick drills · You
 
-The interface should feel premium, cinematic, mobile-native, and focused.
+## Usability rules
 
-## UX Inspirations
+- Math must remain readable (KaTeX for fractions and equations)
+- Animations must not hide learning; respect reduced motion
+- Wrong answers use gentle feedback — no lives, no shame
+- Progress always visible (lesson bar, XP, path map)
+- Explicit **Continue** after question feedback (no forced auto-advance)
 
-- Duolingo progression psychology
-- Khan Academy lesson clarity
-- Tactical HUD interfaces
-- ARPG campaign maps
-- Mobile game reward systems
+## Token naming
 
-## Usability Rules
+Use semantic tokens: `text-primary`, `text-secondary`, `bg-surface-page`, `bg-surface-card`, `text-cardinal`.
 
-- Math must remain readable.
-- Animations must not hide learning.
-- Feedback must explain what happened.
-- Failure should feel like useful intel.
-- Progress should always be visible.
+## Accessibility
+
+- Focus rings on interactive elements
+- Progress bars use `role="progressbar"`
+- Path nodes use SVG icons with `aria-label`
+- Settings: large text, high contrast, reduced motion

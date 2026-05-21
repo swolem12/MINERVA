@@ -1,0 +1,632 @@
+[
+  {
+    "id": "lesson-prop-003",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "official_arithmetic_reasoning",
+    "skillTag": "proportions",
+    "difficulty": 2,
+    "prompt": "If 4 apples cost 2 dollars, how much for 10?",
+    "answerChoices": [
+      "4",
+      "5",
+      "6",
+      "8"
+    ],
+    "correctAnswer": "5",
+    "explanation": "Unit price 0.50 times 10 equals 5.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "proportions"
+    ]
+  },
+  {
+    "id": "lesson-prop-004",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "official_arithmetic_reasoning",
+    "skillTag": "proportions",
+    "difficulty": 2,
+    "prompt": "A recipe for 6 servings uses 2 cups flour. Flour for 9 servings?",
+    "answerChoices": [
+      "2 cups",
+      "3 cups",
+      "4 cups",
+      "4.5 cups"
+    ],
+    "correctAnswer": "3 cups",
+    "explanation": "Scale factor 1.5: 2 times 1.5 equals 3 cups.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "proportions"
+    ]
+  },
+  {
+    "id": "lesson-prop-005",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "official_arithmetic_reasoning",
+    "skillTag": "proportions",
+    "difficulty": 3,
+    "prompt": "A 6 ft shadow and 24 ft tree shadow. Person is 5 ft. Tree height?",
+    "answerChoices": [
+      "15 ft",
+      "20 ft",
+      "24 ft",
+      "30 ft"
+    ],
+    "correctAnswer": "20 ft",
+    "explanation": "Proportion 5/6 equals h/24, so h equals 20 ft.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "proportions"
+    ]
+  },
+  {
+    "id": "lesson-mix-002",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "official_arithmetic_reasoning",
+    "skillTag": "proportions",
+    "difficulty": 2,
+    "prompt": "Mix 10L of 20% solution with water to get 15L of 10%. Water added?",
+    "answerChoices": [
+      "5 L",
+      "10 L",
+      "12 L",
+      "15 L"
+    ],
+    "correctAnswer": "5 L",
+    "explanation": "Amount of pure substance stays equal on both sides.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "proportions"
+    ]
+  },
+  {
+    "id": "lesson-mix-003",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "official_arithmetic_reasoning",
+    "skillTag": "proportions",
+    "difficulty": 3,
+    "prompt": "Coffee uses 3 parts beans and 2 parts water. With 12 oz beans, total drink?",
+    "answerChoices": [
+      "15 oz",
+      "18 oz",
+      "20 oz",
+      "24 oz"
+    ],
+    "correctAnswer": "20 oz",
+    "explanation": "Five parts total; each part is 4 oz.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "proportions"
+    ]
+  },
+  {
+    "id": "lesson-mix-004",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "official_arithmetic_reasoning",
+    "skillTag": "proportions",
+    "difficulty": 3,
+    "prompt": "How much pure antifreeze is in 5L of 40% mix?",
+    "answerChoices": [
+      "1 L",
+      "2 L",
+      "2.5 L",
+      "4 L"
+    ],
+    "correctAnswer": "2 L",
+    "explanation": "0.4 times 5 equals 2 liters.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "proportions"
+    ]
+  },
+  {
+    "id": "lesson-unit-002",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "prerequisite_skill",
+    "skillTag": "word_problem_translation",
+    "difficulty": 2,
+    "prompt": "Convert 3 yards to feet.",
+    "answerChoices": [
+      "6 ft",
+      "9 ft",
+      "12 ft",
+      "36 ft"
+    ],
+    "correctAnswer": "9 ft",
+    "explanation": "3 times 3 equals 9 feet.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "word_problem_translation"
+    ]
+  },
+  {
+    "id": "lesson-unit-003",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "prerequisite_skill",
+    "skillTag": "word_problem_translation",
+    "difficulty": 2,
+    "prompt": "Convert 2.5 hours to minutes.",
+    "answerChoices": [
+      "120 min",
+      "130 min",
+      "150 min",
+      "250 min"
+    ],
+    "correctAnswer": "150 min",
+    "explanation": "2.5 times 60 equals 150 minutes.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "word_problem_translation"
+    ]
+  },
+  {
+    "id": "lesson-unit-004",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "prerequisite_skill",
+    "skillTag": "word_problem_translation",
+    "difficulty": 3,
+    "prompt": "A car travels 60 mph for 2.5 hours. Distance?",
+    "answerChoices": [
+      "120 mi",
+      "130 mi",
+      "150 mi",
+      "180 mi"
+    ],
+    "correctAnswer": "150 mi",
+    "explanation": "60 times 2.5 equals 150 miles.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "word_problem_translation"
+    ]
+  },
+  {
+    "id": "lesson-ineq-003",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "inequalities",
+    "difficulty": 2,
+    "prompt": "Which satisfies 2x + 1 < 7?",
+    "answerChoices": [
+      "x = 2",
+      "x = 3",
+      "x = 4",
+      "x = 5"
+    ],
+    "correctAnswer": "x = 2",
+    "explanation": "2x less than 6, so x less than 3.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "inequalities"
+    ]
+  },
+  {
+    "id": "lesson-ineq-004",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "inequalities",
+    "difficulty": 3,
+    "prompt": "Solve: 3x - 2 >= 10",
+    "answerChoices": [
+      "x >= 3",
+      "x >= 4",
+      "x >= 5",
+      "x <= 4"
+    ],
+    "correctAnswer": "x >= 4",
+    "explanation": "3x >= 12, so x >= 4.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "inequalities"
+    ]
+  },
+  {
+    "id": "lesson-alg-003",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "algebra_expressions",
+    "difficulty": 2,
+    "prompt": "Simplify: 5a - 2a + 3",
+    "answerChoices": [
+      "3a + 3",
+      "7a + 3",
+      "3a",
+      "7a"
+    ],
+    "correctAnswer": "3a + 3",
+    "explanation": "Combine like terms: 3a plus 3.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "algebra_expressions"
+    ]
+  },
+  {
+    "id": "lesson-alg-004",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "algebra_expressions",
+    "difficulty": 3,
+    "prompt": "Expand: 2(x + 3)",
+    "answerChoices": [
+      "2x + 3",
+      "2x + 6",
+      "x + 6",
+      "2x + 5"
+    ],
+    "correctAnswer": "2x + 6",
+    "explanation": "Distribute: 2x + 6.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "algebra_expressions"
+    ]
+  },
+  {
+    "id": "lesson-sys-002",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "systems_of_equations",
+    "difficulty": 3,
+    "prompt": "Solve: y = 2x and x + y = 9",
+    "answerChoices": [
+      "x=3,y=6",
+      "x=2,y=4",
+      "x=4,y=8",
+      "x=3,y=9"
+    ],
+    "correctAnswer": "x=3,y=6",
+    "explanation": "Substitute: 3x = 9, x = 3, y = 6.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "systems_of_equations"
+    ]
+  },
+  {
+    "id": "lesson-sys-003",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "systems_of_equations",
+    "difficulty": 3,
+    "prompt": "Solve: 2x + y = 7 and x - y = 2",
+    "answerChoices": [
+      "x=3,y=1",
+      "x=2,y=3",
+      "x=4,y=-1",
+      "x=1,y=5"
+    ],
+    "correctAnswer": "x=3,y=1",
+    "explanation": "Add equations: 3x = 9.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "systems_of_equations"
+    ]
+  },
+  {
+    "id": "lesson-sys-004",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "systems_of_equations",
+    "difficulty": 3,
+    "prompt": "10 tickets cost 42 dollars. Child 3, adult 5. How many adults?",
+    "answerChoices": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correctAnswer": "6",
+    "explanation": "3c + 5a = 42 with c + a = 10 gives a = 6.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "systems_of_equations"
+    ]
+  },
+  {
+    "id": "lesson-geo-003",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "geometry_formulas",
+    "difficulty": 2,
+    "prompt": "Area of rectangle 8 by 5?",
+    "answerChoices": [
+      "13",
+      "26",
+      "40",
+      "45"
+    ],
+    "correctAnswer": "40",
+    "explanation": "8 times 5 equals 40 square units.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "geometry_formulas"
+    ]
+  },
+  {
+    "id": "lesson-geo-004",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "geometry_formulas",
+    "difficulty": 2,
+    "prompt": "Area of triangle base 10, height 6?",
+    "answerChoices": [
+      "30",
+      "60",
+      "16",
+      "20"
+    ],
+    "correctAnswer": "30",
+    "explanation": "One half times 10 times 6 equals 30.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "geometry_formulas"
+    ]
+  },
+  {
+    "id": "lesson-tri-002",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "geometry_formulas",
+    "difficulty": 2,
+    "prompt": "Triangle angles 50 and 60 degrees. Third angle?",
+    "answerChoices": [
+      "60",
+      "70",
+      "80",
+      "90"
+    ],
+    "correctAnswer": "70",
+    "explanation": "180 minus 110 equals 70 degrees.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "geometry_formulas"
+    ]
+  },
+  {
+    "id": "lesson-tri-003",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "geometry_formulas",
+    "difficulty": 3,
+    "prompt": "Isosceles triangle sides 5, 5, and base 6. Perimeter?",
+    "answerChoices": [
+      "11",
+      "16",
+      "15",
+      "10"
+    ],
+    "correctAnswer": "16",
+    "explanation": "5 + 5 + 6 equals 16.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "geometry_formulas"
+    ]
+  },
+  {
+    "id": "lesson-tri-004",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "geometry_formulas",
+    "difficulty": 2,
+    "prompt": "Right triangle legs 5 and 12. Hypotenuse?",
+    "answerChoices": [
+      "13",
+      "17",
+      "15",
+      "10"
+    ],
+    "correctAnswer": "13",
+    "explanation": "5-12-13 Pythagorean triple.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "geometry_formulas"
+    ]
+  },
+  {
+    "id": "lesson-pct-009",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "percentages",
+    "difficulty": 2,
+    "prompt": "What is 15% of 80?",
+    "answerChoices": [
+      "10",
+      "12",
+      "15",
+      "20"
+    ],
+    "correctAnswer": "12",
+    "explanation": "0.15 times 80 equals 12.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "percentages"
+    ]
+  },
+  {
+    "id": "lesson-pct-010",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "percentages",
+    "difficulty": 2,
+    "prompt": "50 is what percent of 200?",
+    "answerChoices": [
+      "20%",
+      "25%",
+      "30%",
+      "40%"
+    ],
+    "correctAnswer": "25%",
+    "explanation": "50/200 equals 0.25.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "percentages"
+    ]
+  },
+  {
+    "id": "lesson-frac-004",
+    "section": "math_knowledge",
+    "scopeClassification": "prerequisite_skill",
+    "skillTag": "fractions",
+    "difficulty": 2,
+    "prompt": "What is 2/3 of 18?",
+    "answerChoices": [
+      "6",
+      "9",
+      "12",
+      "15"
+    ],
+    "correctAnswer": "12",
+    "explanation": "18 divided by 3, times 2 equals 12.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "fractions"
+    ]
+  },
+  {
+    "id": "lesson-frac-005",
+    "section": "math_knowledge",
+    "scopeClassification": "prerequisite_skill",
+    "skillTag": "fractions",
+    "difficulty": 3,
+    "prompt": "Which equals 3/4?",
+    "answerChoices": [
+      "6/9",
+      "9/12",
+      "4/6",
+      "2/5"
+    ],
+    "correctAnswer": "9/12",
+    "explanation": "9/12 simplifies to 3/4.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "fractions"
+    ]
+  },
+  {
+    "id": "lesson-ratio-004",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "official_arithmetic_reasoning",
+    "skillTag": "ratios",
+    "difficulty": 2,
+    "prompt": "Divide 24 in ratio 2:1",
+    "answerChoices": [
+      "8 and 16",
+      "12 and 12",
+      "6 and 18",
+      "10 and 14"
+    ],
+    "correctAnswer": "8 and 16",
+    "explanation": "Three parts: 24/3 = 8 per part.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "ratios"
+    ]
+  },
+  {
+    "id": "lesson-lin-004",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "linear_equations",
+    "difficulty": 2,
+    "prompt": "Solve: x - 5 = 12",
+    "answerChoices": [
+      "x = 7",
+      "x = 17",
+      "x = -7",
+      "x = 6"
+    ],
+    "correctAnswer": "x = 17",
+    "explanation": "Add 5 to both sides.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "linear_equations"
+    ]
+  },
+  {
+    "id": "lesson-lin-005",
+    "section": "math_knowledge",
+    "scopeClassification": "official_math_knowledge",
+    "skillTag": "linear_equations",
+    "difficulty": 3,
+    "prompt": "Solve: 4x + 8 = 24",
+    "answerChoices": [
+      "x = 2",
+      "x = 4",
+      "x = 6",
+      "x = 8"
+    ],
+    "correctAnswer": "x = 4",
+    "explanation": "4x = 16, x = 4.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "linear_equations"
+    ]
+  },
+  {
+    "id": "lesson-wp-004",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "prerequisite_skill",
+    "skillTag": "word_problem_translation",
+    "difficulty": 2,
+    "prompt": "A book costs 18 after a 10% discount. Original price?",
+    "answerChoices": [
+      "16.20",
+      "19.80",
+      "20",
+      "22"
+    ],
+    "correctAnswer": "20",
+    "explanation": "90% of original equals 18.",
+    "estimatedSolveTimeSec": 45,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "word_problem_translation"
+    ]
+  },
+  {
+    "id": "lesson-wp-005",
+    "section": "arithmetic_reasoning",
+    "scopeClassification": "prerequisite_skill",
+    "skillTag": "word_problem_translation",
+    "difficulty": 3,
+    "prompt": "Pipe A fills tank in 6 hrs, B in 3 hrs. Together?",
+    "answerChoices": [
+      "1 hr",
+      "2 hrs",
+      "3 hrs",
+      "4 hrs"
+    ],
+    "correctAnswer": "2 hrs",
+    "explanation": "Rates 1/6 + 1/3 = 1/2 per hour.",
+    "estimatedSolveTimeSec": 55,
+    "commonTrap": "Rushing without checking your work.",
+    "prerequisites": [
+      "word_problem_translation"
+    ]
+  }
+]
