@@ -1,5 +1,9 @@
 # MINERVA Mobile (Capacitor Android)
 
+## Download (easiest)
+
+Install the latest Android APK from **[GitHub Releases](https://github.com/swolem12/MINERVA/releases)** — download the `MINERVA-*-android.apk` file, then open it on your phone.
+
 ## Identity
 
 - **appId:** `com.minerva.afoqt`
